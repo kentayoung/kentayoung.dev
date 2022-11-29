@@ -1,5 +1,5 @@
 import './App.css';
-import './css/kentaYoungWeb.scss';
+import './css/compiled.css';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from './config/firebaseConfig';
@@ -10,7 +10,6 @@ import Navbar from './components/navbar/navbar';
 import AnimatedRoutes from './routes/animatedRoutes';
 
 function App() {
-
 	const updateViewportHeight = () => {
 		document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
 	};
@@ -28,8 +27,7 @@ function App() {
 		console.log(`%c📄 LinkedIn - https://www.linkedin.com/in/kentayoung`, consoleStyleChild);
 		console.log(`%c📧 Email - Kenta@KentaYoung.dev`, consoleStyleChild);
 		console.groupEnd();
-	}
-	else {
+	} else {
 		console.log('localhost: turning off analytics and custom console');
 	}
 

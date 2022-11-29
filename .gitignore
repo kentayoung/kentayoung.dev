@@ -30,3 +30,5 @@ yarn-error.log*
 #image ignore
 /src/assets/galleryImages
 
+package-lock.json
+**/*.bun

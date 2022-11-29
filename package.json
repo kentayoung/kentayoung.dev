@@ -8,7 +8,6 @@
 		"@testing-library/user-event": "^13.5.0",
 		"firebase": "^9.5.0",
 		"framer-motion": "^5.5.5",
-		"node-sass": "^6.0.1",
 		"react": "^17.0.2",
 		"react-app-rewired": "^2.1.9",
 		"react-dom": "^17.0.2",
@@ -18,13 +17,15 @@
 		"react-on-screen": "^2.1.1",
 		"react-router-dom": "^6.0.2",
 		"react-router-hash-link": "^2.4.3",
+		"sass": "^1.56.1",
 		"web-vitals": "^2.1.2"
 	},
 	"devDependencies": {
 		"react-scripts": "4.0.3"
 	},
 	"scripts": {
-		"start": "react-app-rewired start",
+		"sass-dev": "sass --watch --update --style=expanded src/css/kentaYoungWeb.scss:src/css/compiled.css",
+		"start": "sass --style=expanded src/css/kentaYoungWeb.scss:src/css/compiled.css && bun bun ./src/app.jsx && bun dev",
 		"build": "react-app-rewired build",
 		"test": "react-app-rewired test",
 		"eject": "react-scripts eject"

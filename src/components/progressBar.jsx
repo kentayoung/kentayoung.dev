@@ -1,6 +1,5 @@
 import React from 'react';
 import TrackVisibility from 'react-on-screen';
-import '../css/progressBar/progressBar.scss';
 
 const ProgressBarComp = ({ isVisible, ...props }) => {
 	let pbStyle = {};
@@ -12,10 +11,7 @@ const ProgressBarComp = ({ isVisible, ...props }) => {
 		<div className='pb-container'>
 			<div className='pb-title'>{props.title}</div>
 			<div className='pb-bar'>
-				<div
-					style={pbStyle}
-					className={isVisible ? 'pb-bar-progress pb-animate' : ''}
-				></div>
+				<div style={pbStyle} className={isVisible ? 'pb-bar-progress pb-animate' : ''}></div>
 			</div>
 		</div>
 	);
