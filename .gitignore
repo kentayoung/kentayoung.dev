@@ -15,6 +15,7 @@
 # Firebase Hosting
 .firebaserc
 firebase-debug.log
+.firebase/
 
 # misc
 .DS_Store
