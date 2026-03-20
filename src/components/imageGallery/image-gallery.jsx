@@ -1,68 +1,58 @@
 import React from "react";
-import "../../css/imageGallery/imageGallery.scss";
 import { AutomotiveImages, TravelImages } from "./images";
 
-const ImageGallery = ({ scrollPosition }) => {
-  const mapImgs = (colNum, type) => {
-    let iterator = 0;
-    let returnArr = [];
-    let currentPhotos = [];
-    if (type === "automotive") {
-      currentPhotos = AutomotiveImages;
-    } else if (type === "travel") {
-      currentPhotos = TravelImages;
-    }
+const ImgNextGen = ({ srcWebp, fallback, alt, ...props }) => (
+  <picture>
+    <source srcSet={srcWebp} type="image/webp" />
+    <source srcSet={fallback} type="image/jpeg" />
+    <img src={fallback} alt={alt} {...props} />
+  </picture>
+);
 
-    currentPhotos.forEach((img, i) => {
+const ImageGallery = () => {
+  const mapImgs = (colNum, photos) => {
+    let iterator = 0;
+    return photos.reduce((acc, img, i) => {
       if (i === colNum || iterator === colNum) {
-        returnArr.push(
+        acc.push(
           <ImgNextGen
             srcWebp={img.thumbWebp}
             fallback={img.thumbSrc}
             alt={img.alt}
-            className="galleryImage"
+            className="w-full py-2.5"
             key={i}
             loading="lazy"
-          />,
+          />
         );
       }
-      if (iterator === 2) {
-        iterator = 0;
-      } else {
-        iterator++;
-      }
-    });
-
-    return returnArr.map((el) => {
-      return el;
-    });
+      iterator = iterator === 2 ? 0 : iterator + 1;
+      return acc;
+    }, []);
   };
 
-  const ImgNextGen = ({ srcWebp, fallback, alt, ...props }) => {
-    return (
-      <picture>
-        <source srcSet={srcWebp} type="image/webp" />
-        <source srcSet={fallback} type="image/jpeg" />
-        <img src={fallback} alt={alt} {...props} />
-      </picture>
-    );
-  };
+  const Gallery = ({ photos, title }) => (
+    <>
+      <h2 className="text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-text-light mb-4">
+        {title}
+      </h2>
+      <div className="flex flex-row justify-between w-full pb-12.5 max-[900px]:flex-col">
+        <div className="flex flex-col max-w-[calc(33%-10px)] max-[900px]:max-w-screen">
+          {mapImgs(0, photos)}
+        </div>
+        <div className="flex flex-col max-w-[calc(33%-10px)] max-[900px]:max-w-screen">
+          {mapImgs(1, photos)}
+        </div>
+        <div className="flex flex-col max-w-[calc(33%-10px)] max-[900px]:max-w-screen">
+          {mapImgs(2, photos)}
+        </div>
+      </div>
+    </>
+  );
 
   return (
-    <div id="ImageGallery">
-      <h2>Automotive</h2>
-      <div className="box">
-        <div className="col">{mapImgs(0, "automotive")}</div>
-        <div className="col">{mapImgs(1, "automotive")}</div>
-        <div className="col">{mapImgs(2, "automotive")}</div>
-      </div>
-
-      <h2>Travel</h2>
-      <div className="box">
-        <div className="col">{mapImgs(0, "travel")}</div>
-        <div className="col">{mapImgs(1, "travel")}</div>
-        <div className="col">{mapImgs(2, "travel")}</div>
-      </div>
+    <div className="flex flex-col justify-center items-center max-w-full">
+      <Gallery photos={AutomotiveImages} title="Automotive" />
+      <Gallery photos={TravelImages} title="Travel" />
     </div>
   );
 };

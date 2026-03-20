@@ -1,5 +1,3 @@
-import './App.css';
-import './css/kentaYoungWeb.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import firebase from './config/firebaseConfig';
 import { getAnalytics } from 'firebase/analytics';
@@ -15,7 +13,6 @@ function App() {
 	window.addEventListener('resize', updateViewportHeight);
 	updateViewportHeight();
 	if (import.meta.env.MODE !== "development") {
-    //setting up analytics for prod
     getAnalytics(firebase);
   } else {
     console.log("localhost: turning off analytics and custom console");
@@ -34,7 +31,7 @@ function App() {
 	consoleWelcomeMessage();
 
 	return (
-		<div className="app">
+		<div>
 			<HelmetProvider>
 				<Router>
 					<Navbar Router={Router} />

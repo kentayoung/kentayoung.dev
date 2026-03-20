@@ -1,21 +1,15 @@
 import React from 'react';
 import TrackVisibility from 'react-on-screen';
-import '../css/progressBar/progressBar.scss';
 
-const ProgressBarComp = ({ isVisible, ...props }) => {
-	let pbStyle = {};
-	if (props.percent) {
-		pbStyle.width = props.percent + '%';
-	}
-
+const ProgressBarComp = ({ isVisible, percent, title }) => {
 	return (
-		<div className='pb-container'>
-			<div className='pb-title'>{props.title}</div>
-			<div className='pb-bar'>
+		<div className="my-2.5">
+			<div className="text-text-light mb-1.25">{title}</div>
+			<div className="border border-[#333] h-3 overflow-hidden">
 				<div
-					style={pbStyle}
-					className={isVisible ? 'pb-bar-progress pb-animate' : ''}
-				></div>
+					style={{ width: percent ? `${percent}%` : undefined }}
+					className={isVisible ? 'pb-bar-progress pb-animate bg-seafoam h-full' : ''}
+				/>
 			</div>
 		</div>
 	);
