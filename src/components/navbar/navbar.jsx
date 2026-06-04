@@ -33,7 +33,7 @@ const Navbar = () => {
 		<nav
 			id="navbar"
 			className={`fixed top-0 left-0 w-screen h-12.5 flex justify-around items-center text-xl text-text-light z-999 transition-colors duration-1000 ${
-				togglerClicked || scrolled ? 'bg-[#333]' : ''
+				togglerClicked || scrolled ? 'bg-[#2e3326]' : ''
 			}`}
 		>
 			{/* Hamburger toggler — mobile only */}

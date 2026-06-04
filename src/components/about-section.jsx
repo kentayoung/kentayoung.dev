@@ -4,7 +4,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="w-[calc(100vw-110px)] max-w-245 mx-auto pb-17.5 max-[900px]:w-[calc(100vw-40px)] flex flex-col"
+      className="w-[calc(100vw-110px)] max-w-245 mx-auto py-17.5 max-[900px]:w-[calc(100vw-40px)] flex flex-col"
     >
       <h2 className="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-2.5 tracking-[0.25rem]">
         About

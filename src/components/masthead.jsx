@@ -7,10 +7,11 @@ const Masthead = () => {
       <h1
         className="font-light text-[12vw] leading-[12vw] md:text-[6.5rem] md:leading-[7rem] opacity-0"
         style={{
-          background: 'linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.25) 95%)',
+          background: 'linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.7) 95%)',
           WebkitTextFillColor: 'transparent',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
+          filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.6))',
           animation: '1s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s slideDownIn',
         }}
       >
