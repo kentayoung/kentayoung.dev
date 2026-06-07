@@ -6,7 +6,12 @@ const GalleryItem = ({ thumbSrc, alt, width, height }) => (
     style={{ "--r": width / height }}
     className="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
   >
-    <img src={thumbSrc} alt={alt} loading="lazy" className="w-full h-full block" />
+    <img
+      src={thumbSrc}
+      alt={alt}
+      loading="lazy"
+      className="w-full h-full block"
+    />
   </li>
 );
 
@@ -27,12 +32,14 @@ const PhotoGallery = ({ images }) => (
 );
 
 PhotoGallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape({
-    thumbSrc: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  })).isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      thumbSrc: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 const ImageGallery = () => (

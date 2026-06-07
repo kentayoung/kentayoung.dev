@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..700;1,100..700&display=swap");
 @import "tailwindcss";
 
 @theme {
   --color-dark: #1e2118;
   --color-seafoam: #8a9e72;
   --color-text-light: #f0ece3;
-  --font-sans: 'Montserrat', sans-serif;
+  --font-sans: "Montserrat", sans-serif;
 }
 
 :root {
@@ -24,7 +24,7 @@ html {
 
 body {
   background-color: #1e2118;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -36,23 +36,43 @@ iframe {
 /* ── Keyframe animations ────────────────────────────── */
 
 @keyframes slideDownIn {
-  from { transform: translateY(-100%); opacity: 0; }
-  to   { transform: translateY(0);     opacity: 1; }
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes navLinkFadeIn {
-  from { opacity: 0; transform: translateX(-50px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes progressBarIn {
-  from { transform: translateX(-100%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 /* ── Masthead ───────────────────────────────────────── */
@@ -60,15 +80,21 @@ iframe {
 .masthead {
   background-color: #1e2118;
   background-image:
-    linear-gradient(to bottom, rgba(30, 33, 24, 0.0) 0%, rgba(30, 33, 24, 0.2) 50%, rgba(30, 33, 24, 0.65) 80%, #1e2118 100%),
-    url('https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1920/bg-masthead-2026_tc7xdx');
+    linear-gradient(
+      to bottom,
+      rgba(30, 33, 24, 0) 0%,
+      rgba(30, 33, 24, 0.2) 50%,
+      rgba(30, 33, 24, 0.65) 80%,
+      #1e2118 100%
+    ),
+    url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1920/bg-masthead-2026_tc7xdx");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .masthead::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -95,7 +121,7 @@ iframe {
 @media (min-width: 900px) {
   .link-hover::before,
   .link-hover-blue::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -105,8 +131,12 @@ iframe {
     transition: transform 0.25s ease;
   }
 
-  .link-hover::before      { background: #f2f2f2; }
-  .link-hover-blue::before { background: #8a9e72; }
+  .link-hover::before {
+    background: #f2f2f2;
+  }
+  .link-hover-blue::before {
+    background: #8a9e72;
+  }
 
   .link-hover:hover::before,
   .link-hover-blue:hover::before {
@@ -174,10 +204,18 @@ iframe {
   transform: scale(1.5);
 }
 
-#github-KentaYoung:hover    { background-color: #6cc644; }
-#facebook-KentaYoung:hover  { background-color: #1877f2; }
-#instagram-KentaYoung:hover { background-color: #e1306c; }
-#linkedIn-KentaYoung:hover  { background-color: #0077b5; }
+#github-KentaYoung:hover {
+  background-color: #6cc644;
+}
+#facebook-KentaYoung:hover {
+  background-color: #1877f2;
+}
+#instagram-KentaYoung:hover {
+  background-color: #e1306c;
+}
+#linkedIn-KentaYoung:hover {
+  background-color: #0077b5;
+}
 
 /* ── Progress bar ───────────────────────────────────── */
 
