@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import ImageGallery from '../components/imageGallery/image-gallery';
 import Footer from '../components/footer';
 
 const Photography = () => {
-	window.scrollTo(0, 0);
+	useEffect(() => { window.scrollTo(0, 0); }, []);
 
 	return (
 		<motion.div

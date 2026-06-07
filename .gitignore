@@ -32,3 +32,6 @@ yarn-error.log*
 #image ignore
 /src/assets/galleryImages
 
+# auto-generated — rebuilt by scripts/generate-images.mjs at build time
+/src/components/imageGallery/images.jsx
+

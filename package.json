@@ -6,6 +6,7 @@
 	"dependencies": {
 		"@tailwindcss/vite": "^4.2.2",
 		"@vitejs/plugin-react": "^4.3.3",
+		"cloudinary": "^2.10.0",
 		"firebase": "^11.10.0",
 		"framer-motion": "^12.38.0",
 		"react": "^18.3.1",
@@ -34,7 +35,8 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"generate": "node --env-file=.env.local scripts/generate-images.mjs",
+		"build": "node scripts/generate-images.mjs && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview"
 	},
