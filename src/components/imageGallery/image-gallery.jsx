@@ -1,70 +1,51 @@
-import React from "react";
-import "../../css/imageGallery/imageGallery.scss";
+import PropTypes from "prop-types";
 import { AutomotiveImages, TravelImages } from "./images";
 
-const ImageGallery = ({ scrollPosition }) => {
-  const mapImgs = (colNum, type) => {
-    let iterator = 0;
-    let returnArr = [];
-    let currentPhotos = [];
-    if (type === "automotive") {
-      currentPhotos = AutomotiveImages;
-    } else if (type === "travel") {
-      currentPhotos = TravelImages;
-    }
+const GalleryItem = ({ thumbSrc, alt, width, height }) => (
+  <li
+    style={{ "--r": width / height }}
+    className="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
+  >
+    <img src={thumbSrc} alt={alt} loading="lazy" className="w-full h-full block" />
+  </li>
+);
 
-    currentPhotos.forEach((img, i) => {
-      if (i === colNum || iterator === colNum) {
-        returnArr.push(
-          <ImgNextGen
-            srcWebp={img.thumbWebp}
-            fallback={img.thumbSrc}
-            alt={img.alt}
-            className="galleryImage"
-            key={i}
-            loading="lazy"
-          />,
-        );
-      }
-      if (iterator === 2) {
-        iterator = 0;
-      } else {
-        iterator++;
-      }
-    });
-
-    return returnArr.map((el) => {
-      return el;
-    });
-  };
-
-  const ImgNextGen = ({ srcWebp, fallback, alt, ...props }) => {
-    return (
-      <picture>
-        <source srcSet={srcWebp} type="image/webp" />
-        <source srcSet={fallback} type="image/jpeg" />
-        <img src={fallback} alt={alt} {...props} />
-      </picture>
-    );
-  };
-
-  return (
-    <div id="ImageGallery">
-      <h2>Automotive</h2>
-      <div className="box">
-        <div className="col">{mapImgs(0, "automotive")}</div>
-        <div className="col">{mapImgs(1, "automotive")}</div>
-        <div className="col">{mapImgs(2, "automotive")}</div>
-      </div>
-
-      <h2>Travel</h2>
-      <div className="box">
-        <div className="col">{mapImgs(0, "travel")}</div>
-        <div className="col">{mapImgs(1, "travel")}</div>
-        <div className="col">{mapImgs(2, "travel")}</div>
-      </div>
-    </div>
-  );
+GalleryItem.propTypes = {
+  thumbSrc: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
 };
+
+const PhotoGallery = ({ images }) => (
+  <ul className="flex flex-wrap gap-1 p-0 m-0 list-none">
+    {images.map((img, i) => (
+      <GalleryItem key={i} {...img} />
+    ))}
+    <li style={{ flexGrow: 999, flexBasis: 0 }} />
+  </ul>
+);
+
+PhotoGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.shape({
+    thumbSrc: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  })).isRequired,
+};
+
+const ImageGallery = () => (
+  <div className="flex flex-col max-w-full">
+    <h2 className="text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-text-light mb-4">
+      Automotive
+    </h2>
+    <PhotoGallery images={AutomotiveImages} />
+    <h2 className="text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-text-light mt-8 mb-4">
+      Travel
+    </h2>
+    <PhotoGallery images={TravelImages} />
+  </div>
+);
 
 export default ImageGallery;
