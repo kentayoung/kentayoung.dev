@@ -13,13 +13,11 @@ function App() {
   };
   window.addEventListener("resize", updateViewportHeight);
   updateViewportHeight();
-  if (import.meta.env.DEV) {
-    console.group(`%c👋 Fancy seeing you here. Don't forget to check out my other links.`, "font-size: 14px;");
-    console.log(`%c👨‍💻 Github - https://github.com/kentayoung`, "font-size: 12px;");
-    console.log(`%c📄 LinkedIn - https://www.linkedin.com/in/kentayoung`, "font-size: 12px;");
-    console.log(`%c📧 Email - Kenta@KentaYoung.dev`, "font-size: 12px;");
-    console.groupEnd();
-  }
+  console.group(`%c👋 Fancy seeing you here. Don't forget to check out my other links.`, "font-size: 14px;");
+  console.log(`%c👨‍💻 Github - https://github.com/kentayoung`, "font-size: 12px;");
+  console.log(`%c📄 LinkedIn - https://www.linkedin.com/in/kentayoung`, "font-size: 12px;");
+  console.log(`%c📧 Email - Kenta@KentaYoung.dev`, "font-size: 12px;");
+  console.groupEnd();
 
   return (
     <div>
