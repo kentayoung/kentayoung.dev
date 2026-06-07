@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { MenuItems } from './menu-items';
 import { FaInstagram, FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa';
 
 const Navbar = () => {
 	const [togglerClicked, setTogglerClicked] = useState(false);
-	const [scrolled, setScrolled] = useState(false);
-
-	useEffect(() => {
-		window.addEventListener('scroll', () => {
-			setScrolled(window.scrollY > 50);
-		});
-	}, []);
 
 	const handleTogglerClicked = () => {
 		setTogglerClicked(!togglerClicked);
@@ -32,9 +25,7 @@ const Navbar = () => {
 	return (
 		<nav
 			id="navbar"
-			className={`fixed top-0 left-0 w-screen h-12.5 flex justify-around items-center text-xl text-text-light z-999 transition-colors duration-1000 ${
-				togglerClicked || scrolled ? 'bg-[#2e3326]' : ''
-			}`}
+			className="fixed top-0 left-0 w-screen h-12.5 flex justify-around items-center text-xl text-text-light z-999 bg-[#2e3326]"
 		>
 			{/* Hamburger toggler — mobile only */}
 			<div
@@ -79,7 +70,7 @@ const Navbar = () => {
 
 				{/* Social links — visible in mobile menu only */}
 				<li
-					className="flex flex-row justify-evenly items-center max-[900px]:opacity-0 min-[900px]:hidden w-full"
+					className="flex flex-row justify-evenly items-center max-[900px]:opacity-0 min-[900px]:hidden w-full p-8"
 					style={
 						togglerClicked
 							? { animation: `navLinkFadeIn .75s ease forwards ${MenuItems.length / MenuItems.length}s` }
