@@ -8,12 +8,12 @@ const Navbar = () => {
 
   const handleTogglerClicked = () => {
     setTogglerClicked(!togglerClicked);
-    document.body.style.overflow = togglerClicked ? "scroll" : "hidden";
+    document.body.style.overflow = togglerClicked ? "" : "hidden";
   };
 
   const setTogglerFalse = () => {
     setTogglerClicked(false);
-    document.body.style.overflow = "scroll";
+    document.body.style.overflow = "";
   };
 
   const scrollWithOffset = (el) => {

@@ -10,24 +10,25 @@ const AboutSection = () => {
         About
       </h2>
       <div className="text-base text-text-light">
-        <div className="pb-1.25">
-          Hey, friends! <span>&#128075;</span>
-        </div>
         <p className="py-1.25 leading-5">
-          My name is Kenta Young, a Software Engineer based in Idaho 🥔. I&#39;m
-          hard working and creative with more than 10 years of expertise. With a
-          strong understanding of Javascript, Shopify Liquid, HTML, and CSS
-          coupled with a visually driven mind, I have a passion for developing
-          stable and beautiful user interfaces.
+          I&#39;m Kenta Young, a Software Engineer and photographer based in
+          Idaho 🥔. With more than a decade of experience and a strong
+          understanding of Javascript, Shopify Liquid, HTML, and CSS, I have a
+          passion for building Shopify storefronts and polished web experiences.
         </p>
         <p className="py-1.25 leading-5">
-          I&#39;m currently a full time Software Developer with{" "}
+          I spent nearly 4 years at{" "}
           <a href="https://thebeyondgroup.com/" className="link-hover-blue">
             The Beyond Group
-          </a>{" "}
-          and have had the opportunity to work with clients such as{" "}
+          </a>
+          , the last 1½ as a Senior Software Developer leading a small team,
+          working with clients such as{" "}
           <a href="https://thisisneeded.com" className="link-hover-blue">
-            Needed.
+            Needed
+          </a>
+          ,{" "}
+          <a href="https://fabfitfun.com" className="link-hover-blue">
+            FabFitFun
           </a>
           ,{" "}
           <a href="https://fromourplace.com" className="link-hover-blue">
@@ -37,15 +38,27 @@ const AboutSection = () => {
           <a href="https://houseofspoils.com" className="link-hover-blue">
             House of Spoils
           </a>
-          , and{" "}
+          ,{" "}
           <a href="https://hukitchen.com" className="link-hover-blue">
             HU Kitchen
+          </a>
+          ,{" "}
+          <a href="https://dagnedover.com" className="link-hover-blue">
+            Dagne Dover
+          </a>
+          ,{" "}
+          <a href="https://unhide.us" className="link-hover-blue">
+            Unhide
+          </a>
+          , and{" "}
+          <a href="https://tryauri.com" className="link-hover-blue">
+            Auri Nutrition
           </a>
           .
         </p>
         <p className="py-1.25 leading-5">
-          I&#39;m always open to new opportunities to create, so please feel
-          free to reach out and check out my{" "}
+          I&#39;m open to new opportunities to create, so please feel free to
+          reach out and check out my{" "}
           <a
             href={resume}
             className="link-hover-blue"

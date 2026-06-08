@@ -9,10 +9,10 @@ const SkillsSection = () => {
       <h2 className="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-2.5 tracking-[0.25rem]">
         Skills
       </h2>
-      <ProgressBar percent="95" title="Front End Development" />
       <ProgressBar percent="95" title="Shopify" />
+      <ProgressBar percent="85" title="React" />
+      <ProgressBar percent="90" title="Tailwind CSS" />
       <ProgressBar percent="70" title="Back End Development" />
-      <ProgressBar percent="90" title="Debugging" />
     </section>
   );
 };
