@@ -106,21 +106,21 @@ iframe {
 /* ── Link hover underline effect ────────────────────── */
 
 .link-hover,
-.link-hover-blue {
+.link-hover-seafoam {
   position: relative;
   text-decoration: none;
   line-height: 24px;
   color: inherit;
 }
 
-.link-hover-blue,
-.link-hover-blue:visited {
+.link-hover-seafoam,
+.link-hover-seafoam:visited {
   color: #8a9e72;
 }
 
 @media (min-width: 900px) {
   .link-hover::before,
-  .link-hover-blue::before {
+  .link-hover-seafoam::before {
     content: "";
     position: absolute;
     left: 0;
@@ -134,12 +134,12 @@ iframe {
   .link-hover::before {
     background: #f2f2f2;
   }
-  .link-hover-blue::before {
+  .link-hover-seafoam::before {
     background: #8a9e72;
   }
 
   .link-hover:hover::before,
-  .link-hover-blue:hover::before {
+  .link-hover-seafoam:hover::before {
     transform: scaleX(1);
   }
 }

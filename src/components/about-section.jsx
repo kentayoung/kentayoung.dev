@@ -18,50 +18,53 @@ const AboutSection = () => {
         </p>
         <p className="py-1.25 leading-5">
           I spent nearly 4 years at{" "}
-          <a href="https://thebeyondgroup.com/" className="link-hover-blue">
+          <a href="https://thebeyondgroup.com/" className="link-hover-seafoam">
             The Beyond Group
           </a>
           , the last 1½ as a Senior Software Developer leading a small team,
           working with clients such as{" "}
-          <a href="https://thisisneeded.com" className="link-hover-blue">
+          <a href="https://thisisneeded.com" className="link-hover-seafoam">
             Needed
           </a>
           ,{" "}
-          <a href="https://fabfitfun.com" className="link-hover-blue">
+          <a href="https://fabfitfun.com" className="link-hover-seafoam">
             FabFitFun
           </a>
           ,{" "}
-          <a href="https://fromourplace.com" className="link-hover-blue">
+          <a href="https://fromourplace.com" className="link-hover-seafoam">
             Our Place
           </a>
           ,{" "}
-          <a href="https://houseofspoils.com" className="link-hover-blue">
+          <a href="https://houseofspoils.com" className="link-hover-seafoam">
             House of Spoils
           </a>
           ,{" "}
-          <a href="https://hukitchen.com" className="link-hover-blue">
+          <a href="https://hukitchen.com" className="link-hover-seafoam">
             HU Kitchen
           </a>
           ,{" "}
-          <a href="https://dagnedover.com" className="link-hover-blue">
+          <a href="https://dagnedover.com" className="link-hover-seafoam">
             Dagne Dover
           </a>
           ,{" "}
-          <a href="https://unhide.us" className="link-hover-blue">
+          <a href="https://unhide.us" className="link-hover-seafoam">
             Unhide
           </a>
           , and{" "}
-          <a href="https://tryauri.com" className="link-hover-blue">
+          <a href="https://tryauri.com" className="link-hover-seafoam">
             Auri Nutrition
           </a>
           .
         </p>
         <p className="py-1.25 leading-5">
-          I&#39;m open to new opportunities to create, so please feel free to
-          reach out and check out my{" "}
+          I&#39;m open to new opportunities to create, so please feel free to{" "}
+          <a href="mailto:kenta@kentayoung.dev" className="link-hover-seafoam">
+            reach out
+          </a>{" "}
+          and check out my{" "}
           <a
             href={resume}
-            className="link-hover-blue"
+            className="link-hover-seafoam"
             download="KentaYoungResume.pdf"
             target="_blank"
             rel="noreferrer"
