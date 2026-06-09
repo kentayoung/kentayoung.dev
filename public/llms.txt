@@ -1,0 +1,19 @@
+# Kenta Young
+
+> Software Engineer and Photographer based in SW Idaho. Over a decade of experience building web applications, Shopify storefronts, and polished user experiences.
+
+## Pages
+
+- [Home](https://kentayoung.dev/): About, skills, and contact information.
+- [Photography](https://kentayoung.dev/photography): Landscape, nature, and travel photography.
+
+## About
+
+Kenta Young is a Software Engineer with a strong focus on Shopify development and frontend engineering. He spent nearly 4 years at [The Beyond Group](https://thebeyondgroup.com/), the last 1.5 years as a Senior Software Developer leading a small team. Notable clients include Needed, FabFitFun, Our Place, House of Spoils, HU Kitchen, Dagne Dover, Unhide, and Auri Nutrition.
+
+## Contact
+
+- Email: [Kenta@KentaYoung.dev](mailto:kenta@kentayoung.dev)
+- GitHub: [github.com/kentayoung](https://github.com/kentayoung)
+- LinkedIn: [linkedin.com/in/kentayoung](https://www.linkedin.com/in/kentayoung)
+- Location: SW Idaho, USA
