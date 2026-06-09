@@ -1,4 +1,4 @@
-import resume from "../assets/KentaYoungResume.pdf";
+import resume from "../assets/KentaYoungResume2026.pdf";
 
 const AboutSection = () => {
   return (
@@ -65,7 +65,6 @@ const AboutSection = () => {
           <a
             href={resume}
             className="link-hover-seafoam"
-            download="KentaYoungResume.pdf"
             target="_blank"
             rel="noreferrer"
           >
