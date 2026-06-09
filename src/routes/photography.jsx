@@ -17,8 +17,12 @@ const Photography = () => {
       transition={{ duration: 0.5 }}
     >
       <Helmet>
-        <title>Kenta Young - Photography</title>
-        <meta name="description" content="Photographer based in Idaho." />
+        <title>Kenta Young — Photography</title>
+        <meta name="description" content="Photography by Kenta Young — landscape, nature, and travel photos captured in Idaho and beyond." />
+        <link rel="canonical" href="https://kentayoung.dev/photography" />
+        <meta property="og:url" content="https://kentayoung.dev/photography" />
+        <meta property="og:title" content="Kenta Young — Photography" />
+        <meta property="og:description" content="Photography by Kenta Young — landscape, nature, and travel photos captured in Idaho and beyond." />
       </Helmet>
       <div className="min-h-[calc(100vh-150px)] mt-12.5">
         <section className="w-[calc(100vw-110px)] max-w-480 mx-auto max-[900px]:w-[calc(100vw-40px)]">
