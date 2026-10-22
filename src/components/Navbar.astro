@@ -66,7 +66,7 @@ const social = [
     toggler.classList.toggle("active", open);
     menu.classList.toggle("active", open);
     toggler.setAttribute("aria-expanded", String(open));
-    document.body.style.overflow = open ? "hidden" : "";
+    document.documentElement.style.overflow = open ? "hidden" : "";
   };
 
   toggler.addEventListener("click", () =>
