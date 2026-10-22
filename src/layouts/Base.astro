@@ -1,0 +1,71 @@
+---
+import "@fontsource/montserrat/300.css";
+import "@fontsource/montserrat/400.css";
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+
+const {
+  title = "Kenta Young | Software Engineer",
+  description = "Kenta Young, Software Engineer and Photographer based in Idaho. Over a decade of experience building web applications, Shopify storefronts and polished user experiences.",
+  path = "/",
+} = Astro.props;
+const url = new URL(path, Astro.site).href;
+const image = new URL("/android-chrome-512x512.png", Astro.site).href;
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kenta Young",
+  url: "https://kentayoung.dev",
+  jobTitle: "Software Engineer",
+  description:
+    "Software Engineer and Photographer based in Idaho with over a decade of experience building web applications, Shopify storefronts and polished user experiences.",
+  sameAs: [
+    "https://github.com/kentayoung",
+    "https://www.linkedin.com/in/kentayoung",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Kenta Young" />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Kenta Young" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+
+    <slot name="head" />
+
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-FPRPFKVS3C"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-FPRPFKVS3C");
+    </script>
+  </head>
+  <body>
+    <Navbar />
+    <main class="page-in">
+      <slot />
+    </main>
+  </body>
+</html>

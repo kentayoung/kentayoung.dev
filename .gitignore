@@ -11,6 +11,7 @@
 # production
 /build
 /dist
+.astro/
 
 # Firebase Hosting
 .firebaserc
@@ -36,5 +37,5 @@ yarn-error.log*
 /src/assets/galleryImages
 
 # auto-generated — rebuilt by scripts/generate-images.mjs at build time
-/src/components/imageGallery/images.jsx
+/src/data/images.js
 

@@ -1,0 +1,45 @@
+---
+const clients = [
+  { name: "Needed", href: "https://thisisneeded.com" },
+  { name: "FabFitFun", href: "https://fabfitfun.com" },
+  { name: "Our Place", href: "https://fromourplace.com" },
+  { name: "House of Spoils", href: "https://houseofspoils.com" },
+  { name: "HU Kitchen", href: "https://hukitchen.com" },
+  { name: "Dagne Dover", href: "https://dagnedover.com" },
+  { name: "Unhide", href: "https://unhide.us" },
+  { name: "Auri Nutrition", href: "https://tryauri.com" },
+];
+---
+
+<section
+  id="about"
+  class="w-[calc(100vw-110px)] max-w-245 mx-auto py-17.5 max-[900px]:w-[calc(100vw-40px)] flex flex-col"
+>
+  <h2 class="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-2.5 tracking-[0.25rem]">
+    About
+  </h2>
+  <div class="text-base text-text-light">
+    <p class="py-1.25 leading-5">
+      I'm Kenta Young, a Software Engineer and photographer based in Idaho 🥔.
+      With more than a decade of experience and a strong understanding of
+      Javascript, Shopify Liquid, HTML, and CSS, I have a passion for building
+      Shopify storefronts and polished web experiences.
+    </p>
+    <p class="py-1.25 leading-5">
+      I spent nearly 4 years at{" "}
+      <a href="https://thebeyondgroup.com/" class="link-hover-seafoam">The Beyond Group</a>, the last 1½ as a Senior Software Developer leading a small team,
+      working with clients such as{" "}
+      {clients.map((c, i) => (
+        <>
+          <a href={c.href} class="link-hover-seafoam">{c.name}</a>{i < clients.length - 2 ? ", " : i === clients.length - 2 ? ", and " : "."}
+        </>
+      ))}
+    </p>
+    <p class="py-1.25 leading-5">
+      I'm open to new opportunities to create, so please feel free to{" "}
+      <a href="mailto:kenta@kentayoung.dev" class="link-hover-seafoam">reach out</a>{" "}
+      and check out my{" "}
+      <a href="/KentaYoungResume2026.pdf" class="link-hover-seafoam" target="_blank" rel="noreferrer">resume</a>.
+    </p>
+  </div>
+</section>

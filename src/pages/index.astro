@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import Masthead from "../components/Masthead.astro";
+import About from "../components/About.astro";
+import Work from "../components/Work.astro";
+import Skills from "../components/Skills.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+
+const img = (w) =>
+  `https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_${w}/bg-masthead-2026_tc7xdx`;
+---
+
+<Base>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://res.cloudinary.com" />
+    <link rel="preload" as="image" href={img(1200)} media="(max-width: 900px)" fetchpriority="high" />
+    <link rel="preload" as="image" href={img(1920)} media="(min-width: 901px)" fetchpriority="high" />
+  </Fragment>
+  <Masthead />
+  <About />
+  <Work />
+  <Skills />
+  <Contact />
+  <Footer />
+</Base>
