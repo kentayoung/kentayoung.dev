@@ -1,0 +1,86 @@
+---
+import Icon from "./Icon.astro";
+const items = [
+  { display: "home", href: "/#home" },
+  { display: "about", href: "/#about" },
+  { display: "work", href: "/#work" },
+  { display: "skills", href: "/#skills" },
+  { display: "contact", href: "/#contact" },
+  { display: "photography", href: "/photography" },
+];
+const social = [
+  { id: "linkedIn-KentaYoung", href: "https://www.linkedin.com/in/kentayoung", icon: "linkedin", label: "LinkedIn" },
+  { id: "instagram-KentaYoung", href: "https://www.instagram.com/kenta_young/", icon: "instagram", label: "Instagram" },
+  { id: "facebook-KentaYoung", href: "https://www.facebook.com/kentayoungphotography", icon: "facebook", label: "Facebook" },
+  { id: "github-KentaYoung", href: "https://github.com/kentayoung", icon: "github", label: "GitHub" },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 w-screen h-16 flex justify-around items-center text-xl text-text-light z-999 bg-[#2e3326]"
+>
+  <button
+    type="button"
+    aria-label="Toggle menu"
+    aria-expanded="false"
+    aria-controls="site-menu"
+    class="max-[900px]:block hidden absolute top-4.25 right-2.25 cursor-pointer nav-toggler"
+  >
+    <div class="nav-toggler-line1 w-7.5 h-0.5 bg-text-light my-1.25"></div>
+    <div class="nav-toggler-line2 w-7.5 h-0.5 bg-text-light my-1.25"></div>
+    <div class="nav-toggler-line3 w-7.5 h-0.5 bg-text-light my-1.25"></div>
+  </button>
+
+  <ul
+    id="site-menu"
+    class="flex items-center justify-end list-none text-base w-[85vw] max-w-480 mr-8 nav-items-mobile"
+  >
+    {items.map((item, i) => (
+      <li class="mx-5" style={`--i:${i}`}>
+        <a href={item.href} class="link-hover text-text-light">
+          {item.display}
+        </a>
+      </li>
+    ))}
+    <li class="nav-social flex min-[900px]:hidden" style={`--i:${items.length}`}>
+      {social.map(({ id, href, icon, label }) => (
+        <a id={`m-${id}`} href={href} target="_blank" rel="noreferrer" class="icon-circle" aria-label={label}>
+          <Icon name={icon} />
+        </a>
+      ))}
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const toggler = document.querySelector(".nav-toggler");
+  const menu = document.querySelector(".nav-items-mobile");
+  const mobile = window.matchMedia("(max-width: 900px)");
+
+  const setOpen = (open) => {
+    toggler.classList.toggle("active", open);
+    menu.classList.toggle("active", open);
+    toggler.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+
+  toggler.addEventListener("click", () =>
+    setOpen(!menu.classList.contains("active")),
+  );
+  menu.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => setOpen(false)),
+  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+  mobile.addEventListener("change", () => setOpen(false));
+
+  const setViewportHeight = () =>
+    document.documentElement.style.setProperty(
+      "--viewport-height",
+      `${window.innerHeight}px`,
+    );
+  setViewportHeight();
+  window.addEventListener("resize", setViewportHeight);
+</script>

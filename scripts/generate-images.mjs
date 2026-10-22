@@ -58,9 +58,9 @@ ${SECTIONS.map(s => `const ${s.variable} = ${JSON.stringify(results[s.variable],
 ${SECTIONS.map(s => `export const ${s.export} = ${s.variable};`).join('\n')}
 `;
 
-  writeFileSync('src/components/imageGallery/images.jsx', output);
-  console.log('✓ Generated src/components/imageGallery/images.jsx');
+  writeFileSync('src/data/images.js', output);
+  console.log('✓ Generated src/data/images.js');
 } catch (err) {
-  console.warn(`⚠ Cloudinary fetch failed — keeping existing images.jsx\n  ${err.message}`);
+  console.warn(`⚠ Cloudinary fetch failed — keeping existing images.js\n  ${err.message}`);
   process.exit(0);
 }
