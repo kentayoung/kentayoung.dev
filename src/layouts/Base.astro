@@ -102,8 +102,14 @@ const structuredData = {
     )}
   </head>
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-1000 focus:rounded-full focus:bg-seafoam focus:px-4 focus:py-2 focus:text-sm focus:text-dark"
+    >
+      Skip to content
+    </a>
     <Navbar />
-    <main class="page-in">
+    <main id="main" tabindex="-1" class="page-in outline-none">
       <slot />
     </main>
   </body>

@@ -4,8 +4,20 @@ import Footer from "../components/Footer.astro";
 import { AutomotiveImages, TravelImages } from "../data/images.js";
 
 const galleries = [
-  { title: "Automotive", images: AutomotiveImages, top: "mb-4" },
-  { title: "Travel", images: TravelImages, top: "mt-8 mb-4" },
+  {
+    title: "Automotive",
+    description:
+      "My love for photography spawned from my passion for cars. From just wanting to take pictures of my friends' cars to traveling across the US to shoot automotive events, it's been a fun journey. I'm proud to have had my work featured in magazines and across the web.",
+    images: AutomotiveImages,
+    top: "mb-2",
+  },
+  {
+    title: "Travel",
+    description:
+      "I've had the opportunity to travel to many places around the world and capture a lot of interesting moments. These are some of my favorite photos from my travels.",
+    images: TravelImages,
+    top: "mt-8 mb-2",
+  },
 ];
 ---
 
@@ -22,9 +34,10 @@ const galleries = [
     <section class="container-wide">
       <h1 class="section-title">Photography</h1>
       <div class="flex flex-col max-w-full">
-        {galleries.map(({ title, images, top }) => (
+        {galleries.map(({ title, description, images, top }) => (
           <>
             <h2 class={`text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-ink ${top}`}>{title}</h2>
+            <p class="mb-4 max-w-3xl text-sm leading-6 text-ink/60">{description}</p>
             <ul class="flex flex-wrap gap-1 p-0 m-0 list-none">
               {images.map(({ thumbSrc, alt, width, height }) => (
                 <li
