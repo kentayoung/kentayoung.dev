@@ -11,12 +11,12 @@ const cards = [
 
 <section
   id="contact"
-  class="w-[calc(100vw-110px)] max-w-245 mx-auto pb-10 max-[900px]:w-[calc(100vw-40px)]"
+  class="container-page pb-section"
 >
-  <h2 class="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-4 tracking-[0.25rem]">
+  <h2 class="section-title">
     Contact
   </h2>
-  <div class="grid grid-cols-1 gap-4 min-[700px]:grid-cols-2">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     {cards.map(({ icon, title, text, href }) => {
       const Tag = href ? "a" : "div";
       const external = href?.startsWith("http");
@@ -26,19 +26,19 @@ const cards = [
           target={external ? "_blank" : undefined}
           rel={external ? "noreferrer" : undefined}
           class:list={[
-            "group flex min-w-0 items-center gap-4 rounded-[10px] border border-[#3a3f2e] bg-[#262b20] p-5 transition",
-            href && "hover:border-seafoam hover:bg-[#2c3225]",
+            "group flex min-w-0 items-center gap-4 card border border-line p-6 transition",
+            href && "hover:border-seafoam hover:bg-surface-hover",
           ]}
         >
           <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-seafoam text-dark">
             <Icon name={icon} class="h-5 w-5" />
           </span>
           <span class="min-w-0">
-            <span class="block text-[0.7rem] uppercase tracking-[0.15rem] text-text-light/60">{title}</span>
-            <span class="block break-words text-text-light" set:html={text.replaceAll("/", "/<wbr>").replaceAll("@", "@<wbr>")} />
+            <span class="block eyebrow text-ink/60">{title}</span>
+            <span class="block break-words text-ink" set:html={text.replaceAll("/", "/<wbr>").replaceAll("@", "@<wbr>")} />
           </span>
           {href && (
-            <span class="ml-auto pl-2 text-seafoam max-[500px]:hidden opacity-60 transition group-hover:translate-x-1 group-hover:opacity-100" aria-hidden="true">
+            <span class="ml-auto pl-2 text-seafoam max-sm:hidden opacity-60 transition group-hover:translate-x-1 group-hover:opacity-100" aria-hidden="true">
               &rarr;
             </span>
           )}

@@ -11,17 +11,17 @@ const skills = [
 
 <section
   id="skills"
-  class="w-[calc(100vw-110px)] max-w-245 mx-auto pb-17.5 max-[900px]:w-[calc(100vw-40px)]"
+  class="container-page pb-section"
 >
-  <h2 class="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-2.5 tracking-[0.25rem]">
+  <h2 class="section-title">
     Skills
   </h2>
   {skills.map(({ title, items }) => (
     <div class="my-4">
-      <h3 class="text-text-light/60 text-[0.8rem] uppercase tracking-[0.15rem] mb-2">{title}</h3>
+      <h3 class="text-ink/60 eyebrow mb-2">{title}</h3>
       <ul class="flex flex-wrap gap-2">
         {items.map((item) => (
-          <li class="border border-[#3a3f2e] bg-[#262b20] text-text-light text-sm px-3 py-1 rounded-full">{item}</li>
+          <li class="pill pill-filled">{item}</li>
         ))}
       </ul>
     </div>
