@@ -1,5 +1,6 @@
 ---
-const { slug, client, title, summary, stack } = Astro.props;
+const { slug, client, title, summary, stack, level = "h3" } = Astro.props;
+const Heading = level;
 ---
 
 <a
@@ -7,7 +8,7 @@ const { slug, client, title, summary, stack } = Astro.props;
   class="block card p-8 border border-transparent hover:border-seafoam transition"
 >
   <div class="eyebrow text-seafoam">{client}</div>
-  <h3 class="text-xl text-ink font-light pt-1 pb-2">{title}</h3>
+  <Heading class="text-xl text-ink font-light pt-1 pb-2">{title}</Heading>
   <p class="text-ink/80 leading-5 pb-4">{summary}</p>
   <ul class="flex flex-wrap gap-2">
     {stack.map((item) => (

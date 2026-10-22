@@ -20,7 +20,7 @@ import { projects } from "../../data/work.js";
       <h1 class="section-title">Work</h1>
       <p class="text-ink/80 pb-8">Selected case studies, plus other projects I've worked on.</p>
       <div class="grid gap-6">
-        {projects.map((project) => <WorkCard {...project} />)}
+        {projects.map((project) => <WorkCard {...project} level="h2" />)}
       </div>
       <MoreWork />
     </section>
