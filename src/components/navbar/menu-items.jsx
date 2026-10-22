@@ -8,6 +8,14 @@ export const MenuItems = [
     href: "/#about",
   },
   {
+    display: "work",
+    href: "/#work",
+  },
+  {
+    display: "skills",
+    href: "/#skills",
+  },
+  {
     display: "contact",
     href: "/#contact",
   },

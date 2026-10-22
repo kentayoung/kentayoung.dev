@@ -10,7 +10,7 @@ const ContactSection = React.forwardRef((props, ref) => {
       ref={ref}
     >
       <IconContext.Provider value={{ color: "#8a9e72" }}>
-        <div className="gap-6 flex md:flex-row flex-col items-center">
+        <div className="gap-6 flex min-[900px]:flex-row flex-col items-center">
           <div className="bg-[#262b20] rounded-[10px] w-[28vw] min-w-50 text-center p-10 max-w-75 max-[900px]:w-[90vw] max-[900px]:max-w-125">
             <MdLocationPin className="h-5 w-5 mx-auto" />
             <h4 className="font-normal uppercase text-[0.8rem] tracking-[0.15rem] text-text-light mt-1">

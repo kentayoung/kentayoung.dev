@@ -5,6 +5,7 @@
 ## Pages
 
 - [Home](https://kentayoung.dev/): About, skills, and contact information.
+- [Needed case study](https://kentayoung.dev/work/needed): Custom subscription purchasing on Shopify and Recharge.
 - [Photography](https://kentayoung.dev/photography): Landscape, nature, and travel photography.
 
 ## About
