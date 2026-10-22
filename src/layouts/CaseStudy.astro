@@ -3,7 +3,7 @@ import Base from "./Base.astro";
 import Footer from "../components/Footer.astro";
 
 const { client, tagline, description, path, stack, built, challenges } = Astro.props;
-const label = "text-[0.8rem] uppercase tracking-[0.15rem] text-text-light/60";
+const label = "eyebrow text-ink/60";
 ---
 
 <Base
@@ -11,14 +11,14 @@ const label = "text-[0.8rem] uppercase tracking-[0.15rem] text-text-light/60";
   description={description}
   path={path}
 >
-  <div class="min-h-[calc(100vh-150px)] mt-16">
-    <article class="w-[calc(100vw-110px)] max-w-245 mx-auto py-17.5 max-[900px]:w-[calc(100vw-40px)] text-text-light">
+  <div class="min-h-[calc(100vh-150px)] mt-nav">
+    <article class="container-page py-section text-ink">
       <a href="/work" class="link-hover-seafoam text-sm">&larr; All work</a>
-      <h1 class="text-[calc(1.325rem+0.9vw)] font-light pt-6 pb-2.5 tracking-[0.25rem]">{client}</h1>
-      <p class="text-lg text-text-light/80 pb-6">{tagline}</p>
+      <h1 class="section-title pt-6">{client}</h1>
+      <p class="text-lg text-ink/80 pb-6">{tagline}</p>
       <ul class="flex flex-wrap gap-2 pb-10">
         {stack.map((item) => (
-          <li class="border border-[#3a3f2e] bg-[#262b20] text-sm px-3 py-1 rounded-full">{item}</li>
+          <li class="pill pill-filled">{item}</li>
         ))}
       </ul>
 
@@ -33,9 +33,9 @@ const label = "text-[0.8rem] uppercase tracking-[0.15rem] text-text-light/60";
       <h2 class={`${label} pb-4`}>Technical challenges</h2>
       <div class="grid gap-6 md:grid-cols-3">
         {challenges.map(({ title, body }) => (
-          <div class="bg-[#262b20] rounded-[10px] p-6">
+          <div class="card p-6">
             <h3 class="text-base pb-2">{title}</h3>
-            <p class="text-sm leading-5 text-text-light/80">{body}</p>
+            <p class="text-sm leading-5 text-ink/80">{body}</p>
           </div>
         ))}
       </div>
