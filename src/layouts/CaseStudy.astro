@@ -2,14 +2,20 @@
 import Base from "./Base.astro";
 import Footer from "../components/Footer.astro";
 
-const { client, tagline, description, path, stack, built, challenges } = Astro.props;
+const { client, seoTitle, tagline, description, path, stack, built, challenges } = Astro.props;
 const label = "eyebrow text-ink/60";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Work", path: "/work" },
+  { name: client, path },
+];
 ---
 
 <Base
-  title={`${client} Case Study | Kenta Young`}
+  title={seoTitle ?? `${client} Case Study | Kenta Young`}
   description={description}
   path={path}
+  breadcrumbs={breadcrumbs}
 >
   <div class="min-h-[calc(100vh-150px)] mt-nav">
     <article class="container-page py-section text-ink">
