@@ -1,10 +1,102 @@
 @import "tailwindcss";
 
-@theme {
+@theme static {
   --color-dark: #1e2118;
+  --color-surface: #262b20;
+  --color-surface-hover: #2c3225;
+  --color-nav: #2e3326;
+  --color-line: #3a3f2e;
   --color-seafoam: #8a9e72;
+  --color-ink: #f0ece3;
   --color-text-light: #f0ece3;
   --font-sans: "Montserrat", sans-serif;
+
+  --radius-card: 10px;
+
+  --breakpoint-nav: 900px;
+  --spacing-nav: 4rem;
+  --spacing-section: 4.375rem;
+  --container-page: 61.25rem;
+  --container-wide: 120rem;
+
+  --text-section: calc(1.325rem + 0.9vw);
+  --tracking-heading: 0.25rem;
+  --tracking-label: 0.15rem;
+}
+
+@utility container-page {
+  width: calc(100vw - 110px);
+  max-width: var(--container-page);
+  margin-inline: auto;
+  @variant max-nav {
+    width: calc(100vw - 40px);
+  }
+}
+
+@utility container-wide {
+  width: calc(100vw - 110px);
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  @variant max-nav {
+    width: calc(100vw - 40px);
+  }
+}
+
+@utility section-title {
+  font-size: var(--text-section);
+  font-weight: 300;
+  color: var(--color-ink);
+  letter-spacing: var(--tracking-heading);
+  padding-bottom: 0.75rem;
+}
+
+@utility eyebrow {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+}
+
+@utility card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+}
+
+@utility pill {
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-ink);
+}
+
+@utility pill-filled {
+  background-color: var(--color-surface);
+}
+
+@utility btn {
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@utility btn-primary {
+  background-color: var(--color-seafoam);
+  color: var(--color-dark);
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+@utility btn-outline {
+  border: 1px solid var(--color-seafoam);
+  color: var(--color-ink);
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-seafoam) 20%, transparent);
+  }
 }
 
 :root {
@@ -19,11 +111,13 @@ html {
   max-width: 100vw;
   overflow-x: hidden;
   overscroll-behavior: none;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--spacing-nav) + 2rem);
 }
 
 body {
-  background-color: #1e2118;
-  font-family: "Montserrat", sans-serif;
+  background-color: var(--color-dark);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -65,37 +159,70 @@ iframe {
   }
 }
 
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes availability-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  80%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.page-in {
+  animation: pageIn 0.5s ease;
+}
+
+.availability-pulse {
+  animation: availability-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .availability-pulse {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 /* ── Masthead ───────────────────────────────────────── */
 
 .masthead {
-  background-color: #1e2118;
+  --masthead-photo: url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto:eco,w_900/bg-masthead-2026_tc7xdx");
+  background-color: var(--color-dark);
   background-image:
-    linear-gradient(rgba(30, 33, 24, 0.45), rgba(30, 33, 24, 0.45)),
+    linear-gradient(
+      color-mix(in srgb, var(--color-dark) 45%, transparent),
+      color-mix(in srgb, var(--color-dark) 45%, transparent)
+    ),
     linear-gradient(
       to bottom,
-      rgba(30, 33, 24, 0) 0%,
-      rgba(30, 33, 24, 0.2) 50%,
-      rgba(30, 33, 24, 0.65) 80%,
-      #1e2118 100%
+      color-mix(in srgb, var(--color-dark) 0%, transparent) 0%,
+      color-mix(in srgb, var(--color-dark) 20%, transparent) 50%,
+      color-mix(in srgb, var(--color-dark) 65%, transparent) 80%,
+      var(--color-dark) 100%
     ),
-    url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto:eco,w_900/bg-masthead-2026_tc7xdx");
+    var(--masthead-photo);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-@media (min-width: 901px) {
+@media (width >= theme(--breakpoint-nav)) {
   .masthead {
-    background-image:
-      linear-gradient(rgba(30, 33, 24, 0.45), rgba(30, 33, 24, 0.45)),
-      linear-gradient(
-        to bottom,
-        rgba(30, 33, 24, 0) 0%,
-        rgba(30, 33, 24, 0.2) 50%,
-        rgba(30, 33, 24, 0.65) 80%,
-        #1e2118 100%
-      ),
-      url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto:eco,w_1440/bg-masthead-2026_tc7xdx");
+    --masthead-photo: url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto:eco,w_1440/bg-masthead-2026_tc7xdx");
   }
 }
 
@@ -106,7 +233,7 @@ iframe {
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #1e2118;
+  background-color: var(--color-dark);
 }
 
 /* ── Link hover underline effect ────────────────────── */
@@ -121,10 +248,10 @@ iframe {
 
 .link-hover-seafoam,
 .link-hover-seafoam:visited {
-  color: #8a9e72;
+  color: var(--color-seafoam);
 }
 
-@media (min-width: 900px) {
+@media (width >= theme(--breakpoint-nav)) {
   .link-hover::before,
   .link-hover-seafoam::before {
     content: "";
@@ -138,10 +265,10 @@ iframe {
   }
 
   .link-hover::before {
-    background: #f2f2f2;
+    background: var(--color-ink);
   }
   .link-hover-seafoam::before {
-    background: #8a9e72;
+    background: var(--color-seafoam);
   }
 
   .link-hover:hover::before,
@@ -150,12 +277,26 @@ iframe {
   }
 }
 
+p .link-hover-seafoam {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+p .link-hover-seafoam::before {
+  display: none;
+}
+
+#navbar a[aria-current="page"] {
+  color: var(--color-seafoam);
+}
+
 /* ── Navbar mobile menu ─────────────────────────────── */
 
-@media (max-width: 900px) {
+@media (width < theme(--breakpoint-nav)) {
   .nav-items-mobile {
     position: fixed;
-    inset: 64px 0 0 0;
+    inset: var(--spacing-nav) 0 0 0;
     width: 100%;
     max-width: none;
     margin: 0;
@@ -182,7 +323,7 @@ iframe {
 
   .nav-items-mobile li {
     margin: 0;
-    border-bottom: 1px solid #2e3326;
+    border-bottom: 1px solid var(--color-nav);
     opacity: 0;
     transform: translateY(8px);
   }
@@ -246,7 +387,7 @@ iframe {
 .icon-circle {
   width: 50px;
   height: 50px;
-  background: #8a9e72;
+  background: var(--color-seafoam);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -279,64 +420,4 @@ iframe {
 }
 [id$="linkedIn-KentaYoung"]:hover {
   background-color: #0077b5;
-}
-
-/* ── Astro additions ────────────────────────────────── */
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 96px;
-}
-
-@keyframes pageIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.page-in {
-  animation: pageIn 0.5s ease;
-}
-
-
-p .link-hover-seafoam {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-p .link-hover-seafoam::before {
-  display: none;
-}
-
-@keyframes availability-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.65;
-  }
-  80%,
-  100% {
-    transform: scale(3.2);
-    opacity: 0;
-  }
-}
-
-.availability-pulse {
-  animation: availability-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .availability-pulse {
-    animation: none;
-    opacity: 0;
-  }
-}
-
-#navbar a[aria-current="page"] {
-  color: var(--color-seafoam);
 }
