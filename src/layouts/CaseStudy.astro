@@ -1,8 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Base from "./Base.astro";
 import Footer from "../components/Footer.astro";
 
-const { client, seoTitle, tagline, description, path, stack, built, challenges } = Astro.props;
+const { client, seoTitle, tagline, description, path, stack, built, challenges, screens = [] } = Astro.props;
 const label = "eyebrow text-ink/60";
 const breadcrumbs = [
   { name: "Home", path: "/" },
@@ -36,6 +37,52 @@ const breadcrumbs = [
         {built.map((item) => <li>{item}</li>)}
       </ul>
 
+      {screens.length > 0 && (
+        <>
+          <h2 class={`${label} pb-2`}>What it looks like</h2>
+          <p class="text-sm text-ink/60 pb-4">Screenshots from the live site, captured in October 2026.</p>
+          <div class="screens grid gap-6 pb-10" data-screens>
+            <div role="tablist" aria-label="Screenshots" data-screens-nav class="flex flex-wrap gap-2">
+              {screens.map(({ tab }, i) => (
+                <button
+                  type="button"
+                  role="tab"
+                  id={`screen-tab-${i}`}
+                  aria-controls={`screen-panel-${i}`}
+                  aria-selected={i === 0 ? "true" : "false"}
+                  tabindex={i === 0 ? 0 : -1}
+                  class="pill inline-flex min-h-11 cursor-pointer items-center transition hover:border-seafoam aria-selected:border-seafoam aria-selected:bg-seafoam aria-selected:text-dark"
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            {screens.map(({ image, alt, caption }, i) => (
+              <figure data-screen id={`screen-panel-${i}`} hidden={i > 0}>
+                <Image
+                  src={image}
+                  alt={alt}
+                  widths={[640, 960, 1440]}
+                  sizes="(min-width: 1024px) 980px, 100vw"
+                  class="h-auto w-full rounded-card border border-line"
+                />
+                <figcaption class="pt-2 text-center text-sm leading-5 text-ink/60">{caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <noscript>
+            <style is:inline>
+              [data-screen] {
+                display: block !important;
+              }
+              [data-screens-nav] {
+                display: none !important;
+              }
+            </style>
+          </noscript>
+        </>
+      )}
+
       <h2 class={`${label} pb-4`}>Technical challenges</h2>
       <div class="grid gap-6 md:grid-cols-3">
         {challenges.map(({ title, body }) => (
@@ -49,3 +96,41 @@ const breadcrumbs = [
   </div>
   <Footer />
 </Base>
+
+<script>
+  document.querySelectorAll("[data-screens]").forEach((root) => {
+    const nav = root.querySelector("[data-screens-nav]");
+    const tabs = [...nav.querySelectorAll("[role=tab]")];
+    const panels = [...root.querySelectorAll("[data-screen]")];
+
+    const select = (index) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute("aria-selected", String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+      });
+      panels.forEach((panel, i) => {
+        panel.hidden = i !== index;
+      });
+    };
+
+    panels.forEach((panel, i) => {
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", tabs[i].id);
+      panel.querySelector("img").loading = "eager";
+    });
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(i));
+      tab.addEventListener("keydown", (e) => {
+        const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        const target = (next + tabs.length) % tabs.length;
+        select(target);
+        tabs[target].focus();
+      });
+    });
+
+    select(0);
+  });
+</script>
