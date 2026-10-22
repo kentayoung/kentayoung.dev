@@ -313,3 +313,7 @@ p .link-hover-seafoam {
 p .link-hover-seafoam::before {
   display: none;
 }
+
+#navbar a[aria-current="page"] {
+  color: var(--color-seafoam);
+}
