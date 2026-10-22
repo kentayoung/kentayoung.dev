@@ -1,11 +1,14 @@
 ---
 const skills = [
-  { title: "Shopify", items: ["Online Store 2.0", "Liquid", "Shopify Plus", "Metafields and metaobjects", "Shopify Flow", "Checkout and customer accounts"] },
-  { title: "Ecommerce", items: ["Recharge subscriptions", "Intelligems A/B testing", "Klaviyo", "Gorgias", "Catalog migrations"] },
-  { title: "Analytics and Integrations", items: ["Segment", "GA4", "Littledata", "HubSpot"] },
-  { title: "Frontend", items: ["JavaScript", "TypeScript", "React", "Vue", "AngularJS", "Next.js", "HTML", "CSS/SCSS", "Tailwind CSS", "Vite"] },
-  { title: "CMS and Quality", items: ["Sanity CMS", "Storybook", "Testing Library", "Accessibility (ARIA)", "Structured data (JSON-LD)", "SEO"] },
-  { title: "Engineering", items: ["Technical leadership", "Architecture", "Code review", "Git and GitHub Actions", "CI/CD"] },
+  { title: "Shopify", items: ["Online Store 2.0", "Liquid", "Shopify Plus", "Metafields", "Metaobjects", "Shopify Flow", "Checkout", "Customer accounts"] },
+  { title: "Ecommerce apps", items: ["Recharge", "Intelligems", "Yotpo", "Okendo", "Klaviyo", "Gorgias"] },
+  { title: "Analytics and integrations", items: ["Segment", "GA4", "Google Tag Manager", "Meta Pixel", "Littledata", "HubSpot"] },
+  { title: "Frontend", items: ["JavaScript", "TypeScript", "React", "Vue", "AngularJS", "Next.js", "Web Components", "HTML", "CSS", "SCSS", "Tailwind CSS", "Splide", "Swiper", "Vite", "Storybook"] },
+  { title: "WordPress", items: ["WordPress", "Elementor", "Gravity Forms"] },
+  { title: "Backend and tools", items: ["Node.js", "Cloudflare Workers"] },
+  { title: "AI", items: ["LLMs", "AI coding agents", "llms.txt", "agents.md"] },
+  { title: "CMS and markup", items: ["Sanity CMS", "JSON-LD", "ARIA"] },
+  { title: "Tooling", items: ["Git", "GitHub Actions", "Shopify CLI", "Prettier", "ESLint"] },
 ];
 ---
 
@@ -13,9 +16,10 @@ const skills = [
   id="skills"
   class="container-page pb-section"
 >
-  <h2 class="section-title">
-    Skills
+  <h2 class="section-title text-balance">
+    What I've worked with
   </h2>
+  <p class="pb-2 text-sm text-ink/60">Platforms and tools from client work and personal projects.</p>
   {skills.map(({ title, items }) => (
     <div class="my-4">
       <h3 class="text-ink/60 eyebrow mb-2">{title}</h3>
