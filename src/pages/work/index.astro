@@ -7,16 +7,20 @@ import { projects } from "../../data/work.js";
 ---
 
 <Base
-  title="Work | Kenta Young"
-  description="Case studies and projects by Kenta Young: Shopify, React, and TypeScript work for ecommerce brands."
+  title="Work and Case Studies | Kenta Young"
+  description="Case studies and projects by Kenta Young, including subscription commerce, configurable page modules, and a Shopify storefront build."
   path="/work"
+  breadcrumbs={[
+    { name: "Home", path: "/" },
+    { name: "Work", path: "/work" },
+  ]}
 >
   <div class="min-h-[calc(100vh-150px)] mt-nav pt-8">
     <section class="container-page pb-section">
       <h1 class="section-title">Work</h1>
       <p class="text-ink/80 pb-8">Selected case studies, plus other projects I've worked on.</p>
       <div class="grid gap-6">
-        {projects.map((project) => <WorkCard {...project} />)}
+        {projects.map((project) => <WorkCard {...project} level="h2" />)}
       </div>
       <MoreWork />
     </section>

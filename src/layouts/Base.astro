@@ -6,24 +6,51 @@ import Navbar from "../components/Navbar.astro";
 
 const {
   title = "Kenta Young | Software Engineer",
-  description = "Kenta Young, Software Engineer and Photographer based in Idaho. Over a decade of experience building web applications, Shopify storefronts and polished user experiences.",
+  description = "Kenta Young is a Software Engineer and Photographer in Idaho with 10+ years of experience building web applications and Shopify storefronts.",
   path = "/",
+  breadcrumbs = [],
 } = Astro.props;
 const url = new URL(path, Astro.site).href;
 const image = new URL("/og-image.jpg", Astro.site).href;
 const imageAlt = "Kenta Young, Software Engineer and Photographer";
 const person = {
-  "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://kentayoung.dev/#person",
   name: "Kenta Young",
   url: "https://kentayoung.dev",
   jobTitle: "Software Engineer",
   description:
     "Software Engineer and Photographer based in Idaho with over a decade of experience building web applications, Shopify storefronts and polished user experiences.",
+  knowsAbout: ["Shopify", "React", "TypeScript", "Ecommerce", "Web accessibility", "Photography"],
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Regis University" },
+  address: { "@type": "PostalAddress", addressRegion: "ID", addressCountry: "US" },
   sameAs: [
     "https://github.com/kentayoung",
     "https://www.linkedin.com/in/kentayoung",
+    "https://www.instagram.com/kenta_young/",
   ],
+};
+const website = {
+  "@type": "WebSite",
+  "@id": "https://kentayoung.dev/#website",
+  name: "Kenta Young",
+  url: "https://kentayoung.dev",
+  author: { "@id": "https://kentayoung.dev/#person" },
+};
+const crumbs = breadcrumbs.length
+  ? {
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: crumb.name,
+        item: new URL(crumb.path, Astro.site).href,
+      })),
+    }
+  : null;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [person, website, crumbs].filter(Boolean),
 };
 ---
 
@@ -55,17 +82,24 @@ const person = {
     <meta name="twitter:image" content={image} />
     <meta name="twitter:image:alt" content={imageAlt} />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
     <slot name="head" />
 
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-FPRPFKVS3C"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag("js", new Date());
-      gtag("config", "G-FPRPFKVS3C");
-    </script>
+    {import.meta.env.PROD && (
+      <script is:inline>
+        if (["kentayoung.dev", "www.kentayoung.dev"].includes(location.hostname)) {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag("js", new Date());
+          gtag("config", "G-FPRPFKVS3C");
+          var ga = document.createElement("script");
+          ga.async = true;
+          ga.src = "https://www.googletagmanager.com/gtag/js?id=G-FPRPFKVS3C";
+          document.head.appendChild(ga);
+        }
+      </script>
+    )}
   </head>
   <body>
     <Navbar />
