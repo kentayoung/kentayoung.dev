@@ -1,0 +1,40 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+
+const stack = ["Shopify", "Liquid", "JavaScript", "CSS", "Accessibility"];
+const built = [
+  "Product pages with flavor and size selectors, a gallery that follows the selected option, badges, and a nutrition drawer.",
+  "Homepage and collection layouts, including a product collage, sliders, and collection showcases.",
+  "A side cart with upsells, free shipping messaging, and a styled empty state, plus analytics events for upsell interactions.",
+  "A newsletter signup component, a cookie consent integration, and styling for the product reviews widget.",
+  "Worked through an accessibility audit: meaningful alt text, labels on icon links, real buttons in place of links styled as buttons, and correct tab and accordion semantics.",
+];
+const challenges = [
+  {
+    title: "One theme, many page types",
+    body: "Product, collection, and home pages share components, so each change had to hold up across layouts and screen sizes.",
+  },
+  {
+    title: "Upsells without clutter",
+    body: "Cart upsells had to help without crowding the cart, so I limited what they show, avoided duplicates, and kept them clear of the line items.",
+  },
+  {
+    title: "Accessibility fixes that last",
+    body: "An audit produces many small findings across many templates. I used real buttons and links, meaningful alt text, and correct ARIA states so the fixes work for keyboard and screen reader users.",
+  },
+];
+---
+
+<CaseStudy
+  client="HU Kitchen"
+  tagline="Building a Shopify storefront, from product pages to cart upsells and accessibility fixes."
+  description="Case study: helping build HU Kitchen's Shopify storefront, including product pages, a side cart with upsells, and an accessibility audit."
+  path="/work/hu-kitchen"
+  stack={stack}
+  built={built}
+  challenges={challenges}
+>
+  <a href="https://hukitchen.com" class="link-hover-seafoam" target="_blank" rel="noreferrer">HU Kitchen</a>{" "}
+  is a food brand with a Shopify storefront. Over about a year, from late 2022 into late 2023, I helped build and refine that storefront as a Software Engineer at{" "}
+  <a href="https://thebeyondgroup.com/" class="link-hover-seafoam" target="_blank" rel="noreferrer">The Beyond Group</a>.
+</CaseStudy>
