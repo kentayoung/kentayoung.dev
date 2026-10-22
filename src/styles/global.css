@@ -194,6 +194,15 @@ iframe {
     animation: none;
     opacity: 0;
   }
+
+  .page-in,
+  [style*="animation"] {
+    animation: none !important;
+  }
+
+  [style*="animation"] {
+    opacity: 1 !important;
+  }
 }
 
 /* ── Masthead ───────────────────────────────────────── */
