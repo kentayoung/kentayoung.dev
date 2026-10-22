@@ -14,8 +14,8 @@ const img = (w) =>
 <Base>
   <Fragment slot="head">
     <link rel="preconnect" href="https://res.cloudinary.com" />
-    <link rel="preload" as="image" href={img(900)} media="(max-width: 900px)" fetchpriority="high" />
-    <link rel="preload" as="image" href={img(1440)} media="(min-width: 901px)" fetchpriority="high" />
+    <link rel="preload" as="image" href={img(900)} media="(width < 900px)" fetchpriority="high" />
+    <link rel="preload" as="image" href={img(1440)} media="(width >= 900px)" fetchpriority="high" />
   </Fragment>
   <Masthead />
   <About />
