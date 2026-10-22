@@ -20,7 +20,7 @@ const SECTIONS = [
 ];
 
 function toUrl(publicId) {
-  return `https://res.cloudinary.com/${CLOUD}/image/upload/f_auto,q_auto,w_1000/${publicId}`;
+  return `https://res.cloudinary.com/${CLOUD}/image/upload/f_webp,q_auto,w_1000/${publicId}`;
 }
 
 function toAlt(publicId) {
