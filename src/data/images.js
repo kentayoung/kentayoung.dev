@@ -2,133 +2,133 @@
 
 const autoImages = [
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Porsche-GT4-RS-Wheel-Brake-Caliper_nockn4",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Porsche-GT4-RS-Wheel-Brake-Caliper_nockn4",
     "alt": "Porsche GT4 RS Wheel Brake Caliper",
     "width": 2400,
     "height": 1600
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Porsche-GT4-RS-Silhouette-Storm-Sky_sjr7wu",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Porsche-GT4-RS-Silhouette-Storm-Sky_sjr7wu",
     "alt": "Porsche GT4 RS Silhouette Storm Sky",
     "width": 1600,
     "height": 2400
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Porsche-GT4-RS-Sunset_cvkcko",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Porsche-GT4-RS-Sunset_cvkcko",
     "alt": "Porsche GT4 RS Sunset",
     "width": 2400,
     "height": 1600
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Porsche-GT4-RS-Wing-Sunset_fsjuza",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Porsche-GT4-RS-Wing-Sunset_fsjuza",
     "alt": "Porsche GT4 RS Wing Sunset",
     "width": 2400,
     "height": 1600
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Toyota-Tacoma-Trees_jlqe1s",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Toyota-Tacoma-Trees_jlqe1s",
     "alt": "Toyota Tacoma Trees",
     "width": 2000,
     "height": 1333
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-PRE-Racing-Subaru-WRX-STI_bhvpyp",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-PRE-Racing-Subaru-WRX-STI_bhvpyp",
     "alt": "PRE Racing Subaru WRX STI",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Toyota-Tacoma-Stars_l9xasw",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Toyota-Tacoma-Stars_l9xasw",
     "alt": "Toyota Tacoma Stars",
     "width": 1335,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Robin-Shute-Pikes-Peak_tgpeve",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Robin-Shute-Pikes-Peak_tgpeve",
     "alt": "Robin Shute Pikes Peak",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Revvolution-Subaru-BRZ-Rear_ndoadq",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Revvolution-Subaru-BRZ-Rear_ndoadq",
     "alt": "Revvolution Subaru BRZ Rear",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Revvolution-Subaru-BRZ-Front_cvgtzv",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Revvolution-Subaru-BRZ-Front_cvgtzv",
     "alt": "Revvolution Subaru BRZ Front",
     "width": 1335,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Porsche-911-Sunrise_pv8uyu",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Porsche-911-Sunrise_pv8uyu",
     "alt": "Porsche 911 Sunrise",
     "width": 1335,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Mclaren-765lt-Shift-S3ctor_ijclvb",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Mclaren-765lt-Shift-S3ctor_ijclvb",
     "alt": "Mclaren 765lt Shift S3ctor",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Ford-GT-F7F-Shift-S3ctor-Pikes-Peak_wm9jvx",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Ford-GT-F7F-Shift-S3ctor-Pikes-Peak_wm9jvx",
     "alt": "Ford GT F7F Shift S3ctor Pikes Peak",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-BMW-Nissan-GTR-Shift-S3ctor-Sunrise_zmtygz",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-BMW-Nissan-GTR-Shift-S3ctor-Sunrise_zmtygz",
     "alt": "BMW Nissan GTR Shift S3ctor Sunrise",
     "width": 1335,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-English-Racing-F7F-Shift-S3ctor-Panorama_tzeaml",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-English-Racing-F7F-Shift-S3ctor-Panorama_tzeaml",
     "alt": "English Racing F7F Shift S3ctor Panorama",
     "width": 2000,
     "height": 1081
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Nissan-GTR-Taillight_wqgfa9",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Nissan-GTR-Taillight_wqgfa9",
     "alt": "Nissan GTR Taillight",
     "width": 1335,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Chevrolet-Camaro-Burnout_lqux5u",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Chevrolet-Camaro-Burnout_lqux5u",
     "alt": "Chevrolet Camaro Burnout",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Audi-R8-Front_tkk3yt",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Audi-R8-Front_tkk3yt",
     "alt": "Audi R8 Front",
     "width": 2000,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-English-Racing-Transport-Semi_n1z4ty",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-English-Racing-Transport-Semi_n1z4ty",
     "alt": "English Racing Transport Semi",
     "width": 1335,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Greg-Tracy-Palatov-EV-Pikes-Peak_xlultp",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Greg-Tracy-Palatov-EV-Pikes-Peak_xlultp",
     "alt": "Greg Tracy Palatov EV Pikes Peak",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Lamborghini-Aventador-Shift-S3ctor_rm9hkh",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Lamborghini-Aventador-Shift-S3ctor_rm9hkh",
     "alt": "Lamborghini Aventador Shift S3ctor",
     "width": 2000,
     "height": 1335
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/automotive-Audi-R8-Studio_ryydqh",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/automotive-Audi-R8-Studio_ryydqh",
     "alt": "Audi R8 Studio",
     "width": 2000,
     "height": 1125
@@ -137,127 +137,127 @@ const autoImages = [
 
 const travelImages = [
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Silver-Chrome-Robot-Sculpture_kwacgz",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Silver-Chrome-Robot-Sculpture_kwacgz",
     "alt": "Silver Chrome Robot Sculpture",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Gold-Chrome-Robot-Sculpture_johthr",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Gold-Chrome-Robot-Sculpture_johthr",
     "alt": "Gold Chrome Robot Sculpture",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Fujicolor-Bench-Shadow-Black-And-White_ojqsii",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Fujicolor-Bench-Shadow-Black-And-White_ojqsii",
     "alt": "Fujicolor Bench Shadow Black And White",
     "width": 2000,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Shiraito-Falls_jeejeq",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Shiraito-Falls_jeejeq",
     "alt": "Shiraito Falls",
     "width": 2000,
     "height": 1333
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Nagoya-TV-Tower-Night_ffnsba",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Nagoya-TV-Tower-Night_ffnsba",
     "alt": "Nagoya TV Tower Night",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Maple-Leaves-Sunburst_dzky15",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Maple-Leaves-Sunburst_dzky15",
     "alt": "Maple Leaves Sunburst",
     "width": 2000,
     "height": 1333
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Forest-Waterfall-Green-Pool_zsiloj",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Forest-Waterfall-Green-Pool_zsiloj",
     "alt": "Forest Waterfall Green Pool",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Streetlamp-Blue-Sky_rgeb4m",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Streetlamp-Blue-Sky_rgeb4m",
     "alt": "Streetlamp Blue Sky",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Concrete-Pier-Teal-Water_jbnk0b",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Concrete-Pier-Teal-Water_jbnk0b",
     "alt": "Concrete Pier Teal Water",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Fushimi-Inari-Torii-Gates_z3h7xe",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Fushimi-Inari-Torii-Gates_z3h7xe",
     "alt": "Fushimi Inari Torii Gates",
     "width": 1667,
     "height": 2500
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Bamboo-Forest-Path_oi116u",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Bamboo-Forest-Path_oi116u",
     "alt": "Bamboo Forest Path",
     "width": 1667,
     "height": 2500
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Quorra-Corgi-Foo-Dog_sbmage",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Quorra-Corgi-Foo-Dog_sbmage",
     "alt": "Quorra Corgi Foo Dog",
     "width": 1266,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Nipton-California-Camping-Sunset-Moon_nyzmud",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Nipton-California-Camping-Sunset-Moon_nyzmud",
     "alt": "Nipton California Camping Sunset Moon",
     "width": 2000,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Niption-California-Sunset_dcnepy",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Niption-California-Sunset_dcnepy",
     "alt": "Niption California Sunset",
     "width": 2000,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Marina-Bay-Sands-Night_ixhxkp",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Marina-Bay-Sands-Night_ixhxkp",
     "alt": "Marina Bay Sands Night",
     "width": 2000,
     "height": 1197
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Jellyfish-Aquarium-Of-The-Pacific_pdh0yt",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Jellyfish-Aquarium-Of-The-Pacific_pdh0yt",
     "alt": "Jellyfish Aquarium Of The Pacific",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Ireland-Castle-Sunset_xyc3j2",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Ireland-Castle-Sunset_xyc3j2",
     "alt": "Ireland Castle Sunset",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Gardens-By-The-Bay-Night-Marina-Bay-Sands_w6elip",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Gardens-By-The-Bay-Night-Marina-Bay-Sands_w6elip",
     "alt": "Gardens By The Bay Night Marina Bay Sands",
     "width": 1500,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Bangkok-Thailand-Night-Cityscape_ff4zwp",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Bangkok-Thailand-Night-Cityscape_ff4zwp",
     "alt": "Bangkok Thailand Night Cityscape",
     "width": 1333,
     "height": 2000
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Chang-Beer_zryi5g",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Chang-Beer_zryi5g",
     "alt": "Chang Beer",
     "width": 2000,
     "height": 1333
   },
   {
-    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1000/travel-Bangkok-Thailand-City-Night-Long-Exposure_tkre4v",
+    "thumbSrc": "https://res.cloudinary.com/dlgytpexo/image/upload/f_webp,q_auto,w_1000/travel-Bangkok-Thailand-City-Night-Long-Exposure_tkre4v",
     "alt": "Bangkok Thailand City Night Long Exposure",
     "width": 2000,
     "height": 1333
