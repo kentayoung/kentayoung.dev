@@ -78,7 +78,7 @@ iframe {
       rgba(30, 33, 24, 0.65) 80%,
       #1e2118 100%
     ),
-    url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1200/bg-masthead-2026_tc7xdx");
+    url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto:eco,w_900/bg-masthead-2026_tc7xdx");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -95,7 +95,7 @@ iframe {
         rgba(30, 33, 24, 0.65) 80%,
         #1e2118 100%
       ),
-      url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto,w_1920/bg-masthead-2026_tc7xdx");
+      url("https://res.cloudinary.com/dlgytpexo/image/upload/f_auto,q_auto:eco,w_1440/bg-masthead-2026_tc7xdx");
   }
 }
 
@@ -312,4 +312,31 @@ p .link-hover-seafoam {
 
 p .link-hover-seafoam::before {
   display: none;
+}
+
+@keyframes availability-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  80%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.availability-pulse {
+  animation: availability-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .availability-pulse {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+#navbar a[aria-current="page"] {
+  color: var(--color-seafoam);
 }

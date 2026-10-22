@@ -1,0 +1,40 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+
+const stack = ["React", "TypeScript", "Next.js", "Headless CMS", "Storybook", "Testing Library"];
+const built = [
+  "Plan and tier selectors with clickable cards and configurable options.",
+  "A restyled quiz flow with intro, question, and contact steps, a progress indicator, and an offer banner.",
+  "Hero, how-it-works, and sticky offer modules, restyled for seasonal promotions.",
+  "Reusable banner and logo marquee components with editor-friendly settings.",
+  "Unit tests and Storybook stories for each component.",
+];
+const challenges = [
+  {
+    title: "Content that marketers control",
+    body: "Each module can be configured by non-developers, so the settings had to be flexible without letting an editor break the layout.",
+  },
+  {
+    title: "Changing live content safely",
+    body: "When a field changed format, I made sure existing content kept rendering while new content used the new format.",
+  },
+  {
+    title: "Accessible selection controls",
+    body: "Tier and plan cards behave like a radio group, so they have proper labels and keyboard support, checked with automated tests.",
+  },
+];
+---
+
+<CaseStudy
+  client="FabFitFun"
+  tagline="Reusable page modules in React and TypeScript."
+  description="Case study: building configurable plan selectors, a restyled quiz, and hero modules for FabFitFun in React and TypeScript."
+  path="/work/fabfitfun"
+  stack={stack}
+  built={built}
+  challenges={challenges}
+>
+  <a href="https://fabfitfun.com" class="link-hover-seafoam" target="_blank" rel="noreferrer">FabFitFun</a>{" "}
+  builds its marketing and sign-up pages from configurable modules. From late 2025 into 2026 I built and extended those modules in React and TypeScript, as a Senior Software Developer at{" "}
+  <a href="https://thebeyondgroup.com/" class="link-hover-seafoam" target="_blank" rel="noreferrer">The Beyond Group</a>.
+</CaseStudy>

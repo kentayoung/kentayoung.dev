@@ -3,11 +3,13 @@ import Icon from "./Icon.astro";
 const items = [
   { display: "home", href: "/#home" },
   { display: "about", href: "/#about" },
-  { display: "work", href: "/#work" },
+  { display: "work", href: "/work", page: "/work" },
   { display: "skills", href: "/#skills" },
   { display: "contact", href: "/#contact" },
-  { display: "photography", href: "/photography" },
+  { display: "photography", href: "/photography", page: "/photography" },
 ];
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isCurrent = (page) => page && (path === page || path.startsWith(`${page}/`));
 const social = [
   { id: "linkedIn-KentaYoung", href: "https://www.linkedin.com/in/kentayoung", icon: "linkedin", label: "LinkedIn" },
   { id: "instagram-KentaYoung", href: "https://www.instagram.com/kenta_young/", icon: "instagram", label: "Instagram" },
@@ -38,7 +40,7 @@ const social = [
   >
     {items.map((item, i) => (
       <li class="mx-5" style={`--i:${i}`}>
-        <a href={item.href} class="link-hover text-text-light">
+        <a href={item.href} class="link-hover text-text-light" aria-current={isCurrent(item.page) ? "page" : undefined}>
           {item.display}
         </a>
       </li>

@@ -1,0 +1,13 @@
+---
+import { more } from "../data/work.js";
+---
+
+<h2 class="text-text-light/60 text-[0.8rem] uppercase tracking-[0.15rem] mt-12 mb-4">Also worked on</h2>
+<ul class="grid gap-x-10 gap-y-5 min-[700px]:grid-cols-2">
+  {more.map(({ client, summary }) => (
+    <li class="border-l-2 border-seafoam/60 pl-4">
+      <div class="text-text-light">{client}</div>
+      <p class="text-text-light/80 text-sm leading-5 pt-1">{summary}</p>
+    </li>
+  ))}
+</ul>

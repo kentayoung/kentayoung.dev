@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import Footer from "../../components/Footer.astro";
+import WorkCard from "../../components/WorkCard.astro";
+import MoreWork from "../../components/MoreWork.astro";
+import { projects } from "../../data/work.js";
+---
+
+<Base
+  title="Work | Kenta Young"
+  description="Case studies and projects by Kenta Young: Shopify, React, and TypeScript work for ecommerce brands."
+  path="/work"
+>
+  <div class="min-h-[calc(100vh-150px)] mt-16 pt-8">
+    <section class="w-[calc(100vw-110px)] max-w-245 mx-auto pb-17.5 max-[900px]:w-[calc(100vw-40px)]">
+      <h1 class="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-2.5 tracking-[0.25rem]">Work</h1>
+      <p class="text-text-light/80 pb-8">Selected case studies, plus other projects I've worked on.</p>
+      <div class="grid gap-6">
+        {projects.map((project) => <WorkCard {...project} />)}
+      </div>
+      <MoreWork />
+    </section>
+  </div>
+  <Footer />
+</Base>

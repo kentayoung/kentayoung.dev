@@ -5,12 +5,15 @@
 ## Pages
 
 - [Home](https://kentayoung.dev/): About, skills, and contact information.
+- [Work](https://kentayoung.dev/work): All case studies and other projects.
 - [Needed case study](https://kentayoung.dev/work/needed): Custom subscription purchasing on Shopify and Recharge.
+- [FabFitFun case study](https://kentayoung.dev/work/fabfitfun): Configurable page modules in React, TypeScript, and a headless CMS.
+- [HU Kitchen case study](https://kentayoung.dev/work/hu-kitchen): Building a Shopify storefront, from product pages to cart upsells and accessibility fixes.
 - [Photography](https://kentayoung.dev/photography): Landscape, nature, and travel photography.
 
 ## About
 
-Kenta Young is a Software Engineer with a strong focus on Shopify development and frontend engineering. He spent nearly 4 years at [The Beyond Group](https://thebeyondgroup.com/), the last 1.5 years as a Senior Software Developer leading a small team. Notable clients include Needed, FabFitFun, Our Place, House of Spoils, HU Kitchen, Dagne Dover, Unhide, and Auri Nutrition.
+Kenta Young is a Software Engineer with a strong focus on Shopify development and frontend engineering. He spent nearly 4 years at [The Beyond Group](https://thebeyondgroup.com/), the last 1.5 years as a Senior Software Developer leading a small team. Notable clients include Needed, FabFitFun, Our Place, House of Spoils, HU Kitchen, Dagne Dover, Unhide, Auri Nutrition, Solawave, Cometeer, MUD\WTR, and Loyal.
 
 ## Contact
 
@@ -18,3 +21,4 @@ Kenta Young is a Software Engineer with a strong focus on Shopify development an
 - GitHub: [github.com/kentayoung](https://github.com/kentayoung)
 - LinkedIn: [linkedin.com/in/kentayoung](https://www.linkedin.com/in/kentayoung)
 - Location: SW Idaho, USA
+- Availability: Open to remote and hybrid roles
