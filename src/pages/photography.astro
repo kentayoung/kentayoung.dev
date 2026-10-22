@@ -14,13 +14,13 @@ const galleries = [
   description="Photography by Kenta Young, landscape, nature, and travel photos captured in Idaho and beyond."
   path="/photography"
 >
-  <div class="min-h-[calc(100vh-150px)] mt-16 pt-8">
-    <section class="w-[calc(100vw-110px)] max-w-480 mx-auto max-[900px]:w-[calc(100vw-40px)]">
-      <h2 class="text-[calc(1.325rem+0.9vw)] text-text-light font-light pb-2.5 tracking-[0.25rem]">Photography</h2>
+  <div class="min-h-[calc(100vh-150px)] mt-nav pt-8">
+    <section class="container-wide">
+      <h2 class="section-title">Photography</h2>
       <div class="flex flex-col max-w-full">
         {galleries.map(({ title, images, top }) => (
           <>
-            <h2 class={`text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-text-light ${top}`}>{title}</h2>
+            <h2 class={`text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-ink ${top}`}>{title}</h2>
             <ul class="flex flex-wrap gap-1 p-0 m-0 list-none">
               {images.map(({ thumbSrc, alt, width, height }) => (
                 <li

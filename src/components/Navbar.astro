@@ -20,32 +20,32 @@ const social = [
 
 <nav
   id="navbar"
-  class="fixed top-0 left-0 w-screen h-16 flex justify-around items-center text-xl text-text-light z-999 bg-[#2e3326]"
+  class="fixed top-0 left-0 w-screen h-nav flex justify-around items-center text-xl text-ink z-999 bg-nav"
 >
   <button
     type="button"
     aria-label="Toggle menu"
     aria-expanded="false"
     aria-controls="site-menu"
-    class="max-[900px]:block hidden absolute top-4.25 right-2.25 cursor-pointer nav-toggler"
+    class="max-nav:block hidden absolute top-4.25 right-2.25 cursor-pointer nav-toggler"
   >
-    <div class="nav-toggler-line1 w-7.5 h-0.5 bg-text-light my-1.25"></div>
-    <div class="nav-toggler-line2 w-7.5 h-0.5 bg-text-light my-1.25"></div>
-    <div class="nav-toggler-line3 w-7.5 h-0.5 bg-text-light my-1.25"></div>
+    <div class="nav-toggler-line1 w-7.5 h-0.5 bg-ink my-1.25"></div>
+    <div class="nav-toggler-line2 w-7.5 h-0.5 bg-ink my-1.25"></div>
+    <div class="nav-toggler-line3 w-7.5 h-0.5 bg-ink my-1.25"></div>
   </button>
 
   <ul
     id="site-menu"
-    class="flex items-center justify-end list-none text-base w-[85vw] max-w-480 mr-8 nav-items-mobile"
+    class="flex items-center justify-end list-none text-base w-[85vw] max-w-wide mr-8 nav-items-mobile"
   >
     {items.map((item, i) => (
       <li class="mx-5" style={`--i:${i}`}>
-        <a href={item.href} class="link-hover text-text-light" aria-current={isCurrent(item.page) ? "page" : undefined}>
+        <a href={item.href} class="link-hover text-ink" aria-current={isCurrent(item.page) ? "page" : undefined}>
           {item.display}
         </a>
       </li>
     ))}
-    <li class="nav-social flex min-[900px]:hidden" style={`--i:${items.length}`}>
+    <li class="nav-social flex nav:hidden" style={`--i:${items.length}`}>
       {social.map(({ id, href, icon, label }) => (
         <a id={`m-${id}`} href={href} target="_blank" rel="noreferrer" class="icon-circle" aria-label={label}>
           <Icon name={icon} />
@@ -58,13 +58,15 @@ const social = [
 <script>
   const toggler = document.querySelector(".nav-toggler");
   const menu = document.querySelector(".nav-items-mobile");
-  const mobile = window.matchMedia("(max-width: 900px)");
+  const navBreakpoint =
+    getComputedStyle(document.documentElement).getPropertyValue("--breakpoint-nav").trim() || "900px";
+  const mobile = window.matchMedia(`(width < ${navBreakpoint})`);
 
   const setOpen = (open) => {
     toggler.classList.toggle("active", open);
     menu.classList.toggle("active", open);
     toggler.setAttribute("aria-expanded", String(open));
-    document.body.style.overflow = open ? "hidden" : "";
+    document.documentElement.style.overflow = open ? "hidden" : "";
   };
 
   toggler.addEventListener("click", () =>
