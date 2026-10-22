@@ -31,6 +31,25 @@ public/           static files: resume PDF, favicons, sitemap.xml, llms.txt, 404
 
 To add a case study, copy `src/pages/work/needed.astro`, add an entry to `projects` in `src/data/work.js` (it shows up on the home page and on `/work`), and add the route to `public/sitemap.xml` and `public/llms.txt`. Smaller projects go in `more` in the same file.
 
+## Design tokens
+
+Colors, spacing, and breakpoints are defined once in `src/styles/global.css` under `@theme`. Use these instead of one-off values.
+
+| Token | Utility | Used for |
+|---|---|---|
+| `--color-dark` | `bg-dark`, `text-dark` | Page background |
+| `--color-surface`, `--color-surface-hover` | `bg-surface`, `hover:bg-surface-hover` | Cards and filled pills |
+| `--color-line` | `border-line` | Card and pill borders |
+| `--color-nav` | `bg-nav` | Navbar |
+| `--color-ink` | `text-ink` | Main text (use `/80` and `/60` for muted text) |
+| `--color-seafoam` | `text-seafoam`, `bg-seafoam` | Accent |
+| `--radius-card` | `rounded-card` | Card corners (10px) |
+| `--spacing-nav` | `h-nav`, `mt-nav` | Navbar height (64px) |
+| `--spacing-section` | `pb-section`, `py-section` | Space between sections (70px) |
+| `--breakpoint-nav` | `nav:`, `max-nav:` | Where the menu switches (900px) |
+
+Shared styles: `container-page` and `container-wide` (page gutters), `section-title`, `eyebrow` (small uppercase label), `card`, `pill` and `pill-filled`, and `btn` with `btn-primary` or `btn-outline`.
+
 ## Image generation
 
 Gallery images are fetched from Cloudinary at build time by tag (`automotive gallery`, `travel gallery`) and written to `src/data/images.js`. Requires credentials in `.env.local`:
