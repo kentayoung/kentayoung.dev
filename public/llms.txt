@@ -9,7 +9,7 @@
 - [Needed case study](https://kentayoung.dev/work/needed): Custom subscription purchasing on Shopify and Recharge.
 - [FabFitFun case study](https://kentayoung.dev/work/fabfitfun): Configurable page modules in React, TypeScript, and a headless CMS.
 - [HU Kitchen case study](https://kentayoung.dev/work/hu-kitchen): Building a Shopify storefront, from product pages to cart upsells and accessibility fixes.
-- [Photography](https://kentayoung.dev/photography): Landscape, nature, and travel photography.
+- [Photography](https://kentayoung.dev/photography): Automotive and travel photography.
 
 ## About
 
