@@ -1,6 +1,5 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Footer from "../../components/Footer.astro";
+import CaseStudy from "../../layouts/CaseStudy.astro";
 
 const stack = ["Shopify", "Liquid", "JavaScript", "Recharge", "Metafields"];
 const built = [
@@ -15,47 +14,18 @@ const challenges = [
   { title: "Accessible selection", body: "Choosing a variant and a selling plan are two linked decisions. I built the selectors so they work with a keyboard and screen readers, not just a mouse." },
   { title: "Shared state across product and cart", body: "The product page, quick-add, and cart all react to the same purchase choices, so I managed JavaScript events and UI state carefully to keep them in sync." },
 ];
-const label = "text-[0.8rem] uppercase tracking-[0.15rem] text-text-light/60";
 ---
 
-<Base
-  title="Needed Case Study | Kenta Young"
+<CaseStudy
+  client="Needed"
+  tagline="Custom subscription purchasing on Shopify and Recharge."
   description="Case study: rebuilding subscription purchasing for Needed on Shopify and Recharge, with variant-based products, custom selectors, and cart upsells."
   path="/work/needed"
+  stack={stack}
+  built={built}
+  challenges={challenges}
 >
-  <div class="min-h-[calc(100vh-150px)] mt-16">
-    <article class="w-[calc(100vw-110px)] max-w-245 mx-auto py-17.5 max-[900px]:w-[calc(100vw-40px)] text-text-light">
-      <a href="/#work" class="link-hover-seafoam text-sm">&larr; Selected work</a>
-      <h1 class="text-[calc(1.325rem+0.9vw)] font-light pt-6 pb-2.5 tracking-[0.25rem]">Needed</h1>
-      <p class="text-lg text-text-light/80 pb-6">Custom subscription purchasing on Shopify and Recharge.</p>
-      <ul class="flex flex-wrap gap-2 pb-10">
-        {stack.map((item) => (
-          <li class="border border-[#3a3f2e] bg-[#262b20] text-sm px-3 py-1 rounded-full">{item}</li>
-        ))}
-      </ul>
-
-      <h2 class={`${label} pb-2`}>Overview</h2>
-      <p class="leading-6 pb-10">
-        <a href="https://thisisneeded.com" class="link-hover-seafoam" target="_blank" rel="noreferrer">Needed</a>{" "}
-        sells subscription products, and each delivery schedule used to be its own product listing. I worked on moving those into variant-based Shopify products backed by Recharge selling plans, then updated everything that touches a purchase: the product page, collection quick-add, the cart, upsells, and interstitials. I did this as a Senior Software Developer at{" "}
-        <a href="https://thebeyondgroup.com/" class="link-hover-seafoam" target="_blank" rel="noreferrer">The Beyond Group</a>.
-      </p>
-
-      <h2 class={`${label} pb-2`}>What I built</h2>
-      <ul class="list-disc pl-5 leading-6 pb-10 space-y-2 marker:text-seafoam">
-        {built.map((item) => <li>{item}</li>)}
-      </ul>
-
-      <h2 class={`${label} pb-4`}>Technical challenges</h2>
-      <div class="grid gap-6 md:grid-cols-3">
-        {challenges.map(({ title, body }) => (
-          <div class="bg-[#262b20] rounded-[10px] p-6">
-            <h3 class="text-base pb-2">{title}</h3>
-            <p class="text-sm leading-5 text-text-light/80">{body}</p>
-          </div>
-        ))}
-      </div>
-    </article>
-  </div>
-  <Footer />
-</Base>
+  <a href="https://thisisneeded.com" class="link-hover-seafoam" target="_blank" rel="noreferrer">Needed</a>{" "}
+  sells subscription products, and each delivery schedule used to be its own product listing. I worked on moving those into variant-based Shopify products backed by Recharge selling plans, then updated everything that touches a purchase: the product page, collection quick-add, the cart, upsells, and interstitials. I did this as a Senior Software Developer at{" "}
+  <a href="https://thebeyondgroup.com/" class="link-hover-seafoam" target="_blank" rel="noreferrer">The Beyond Group</a>.
+</CaseStudy>
