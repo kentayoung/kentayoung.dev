@@ -34,7 +34,7 @@ body {
 
 #astronaut {
 	width: 50px;
-	height: 50px;
+	height: auto;
 	position: absolute;
 	z-index: 3;
 
@@ -56,6 +56,10 @@ body {
 	justify-content: center;
 	align-items: center;
 	color: #f2f2f2;
+}
+
+#pageNotFoundHeaderContainer main {
+	z-index: 1;
 }
 
 .pageNotFoundTitle {
@@ -185,5 +189,23 @@ body {
 	}
 	to {
 		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#astronaut {
+		animation: none;
+		top: 12%;
+		left: 12%;
+	}
+
+	.pageNotFoundTitle,
+	.pageNotFoundDetail {
+		animation: none;
+		opacity: 1;
+	}
+
+	.hideAstronaut {
+		transition: none;
 	}
 }

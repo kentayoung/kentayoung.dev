@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -16,6 +16,7 @@
   <link rel="stylesheet" type="text/css" href="404.css" />
 
   <title>Kenta Young - Page Not Found</title>
+  <meta name="description" content="This page could not be found. Head back to the Kenta Young homepage.">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script>
@@ -58,12 +59,13 @@
   <div id='pageNotFoundContainer'>
     <img id='earthBackground' src='../assets/nasa-Yj1M5riCKk4-large-noAstro-unsplash.jpg' alt='Earth' />
     <div id='pageNotFoundHeaderContainer'>
-      <span class='pageNotFoundTitle'>Looks like you're lost...</span>
-      <span class='pageNotFoundDetail'>
-        Click the astronaut or <a id='homeRedirect' className='link-hover-light'
-          onClick='handleAstronautClick()'>here</a>
-        to bring you home.
-      </span>
+      <main>
+        <h1 class='pageNotFoundTitle'>Looks like you're lost...</h1>
+        <p class='pageNotFoundDetail'>
+          Click the astronaut or <a id='homeRedirect' href='/'
+            onclick='event.preventDefault(); handleAstronautClick()'>head back home</a>.
+        </p>
+      </main>
     </div>
     <img id='astronaut' src='../assets/astronaut.png' alt='Floating astronaut' onClick='handleAstronautClick()' />
   </div>
