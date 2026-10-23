@@ -1,0 +1,40 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+
+const video = {
+  src: "/case-studies/needed-academy/scroll.mp4",
+  poster: "/case-studies/needed-academy/scroll-poster.jpg",
+  alt: "Screen recording scrolling the full Needed Academy page: the hero video, the scroll story where the headline and image change, the program overview, the application form, and the sections below",
+  caption: "A full scroll through the page, from the hero to the footer.",
+};
+const stack = ["Shopify", "Liquid", "JavaScript", "Tailwind CSS", "CSS animations"];
+const built = [
+  "Built each part of the page as its own configurable Shopify section (hero, scroll story, program overview, closing statement, application form, testimonials, and citations), so the team can edit copy and media in the theme editor.",
+  "Made the hero a full-screen looping video, with separate desktop and mobile videos and a parallax effect as you scroll past it.",
+  "Built the scroll-driven story section, where the headline and image swap as you scroll, with its own mobile behavior.",
+  "Created small reusable animation pieces: an animated underline, an animated border, and fade-in entrances that start when an element scrolls into view.",
+  "Built the application form with field validation, loading and success states, and analytics events for field changes and submissions.",
+];
+const challenges = [
+  { title: "Wireframes show layout, not motion", body: "The designs did not say how anything should move, so I worked with the client and product to decide how each section should enter, pin, and transition. Timing is set with delay and duration utility classes, which keeps it easy to tune." },
+  { title: "Scroll-driven sections", body: "The story section pins its content while scroll position decides which headline and image are active. It also has to account for the sticky site header and a different layout on mobile." },
+  { title: "Animating once, cleanly", body: "A single observer marks elements as in view and as already animated, so entrances play when you reach them and do not replay as you scroll back and forth." },
+];
+---
+
+<CaseStudy
+  client="Needed Academy"
+  tagline="An animated, scroll-driven landing page and application flow."
+  description="Case study: building the Needed Academy landing page on Shopify, with scroll-driven storytelling, reusable animations, and a partner application form."
+  seoTitle="Needed Academy: Animated Landing Page on Shopify | Kenta Young"
+  path="/work/needed-academy"
+  video={video}
+  stack={stack}
+  built={built}
+  challenges={challenges}
+>
+  Needed Academy is a free education program from{" "}
+  <a href="https://thisisneeded.com/pages/needed-academy" class="link-hover-seafoam" target="_blank" rel="noreferrer">Needed</a>{" "}
+  for partners and curious mothers. Its page had to turn wireframes into something that moved. I was the lead engineer, working with the client and product to take the designs from wireframes to a finished Shopify page, with video, scroll-driven storytelling, animation, and an application form. I did this at{" "}
+  <a href="https://thebeyondgroup.com/" class="link-hover-seafoam" target="_blank" rel="noreferrer">The Beyond Group</a>.
+</CaseStudy>

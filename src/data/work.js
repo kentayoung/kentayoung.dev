@@ -8,6 +8,14 @@ export const projects = [
     stack: ["Shopify", "Liquid", "JavaScript", "Recharge"],
   },
   {
+    slug: "needed-academy",
+    client: "Needed",
+    title: "Academy landing page",
+    summary:
+      "Led the build of a scroll-driven, animated landing page and application form, taking wireframes to a finished Shopify page.",
+    stack: ["Shopify", "Liquid", "JavaScript", "CSS animations"],
+  },
+  {
     slug: "fabfitfun",
     client: "FabFitFun",
     title: "Configurable page modules",
