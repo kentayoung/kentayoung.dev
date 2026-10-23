@@ -21,7 +21,7 @@ npm run dev
 ## Project structure
 
 ```
-src/pages/        one file per route (index, photography, work/needed)
+src/pages/        one file per route (index, photography, work/needed-catalog-migration)
 src/components/   page sections, navbar, footer, icons
 src/layouts/      shared <head>, meta tags, structured data, navbar
 src/styles/       global.css (Tailwind plus the masthead and menu styles)
@@ -29,7 +29,7 @@ src/data/         generated gallery data and inline SVG icons
 public/           static files: resume PDF, favicons, sitemap.xml, llms.txt, 404 page
 ```
 
-To add a case study, copy `src/pages/work/needed.astro`, add an entry to `projects` in `src/data/work.js` (it shows up on the home page and on `/work`), and add the page to `public/llms.txt`. The sitemap is generated from the same list in `src/pages/sitemap.xml.js`, so it needs no edit. Smaller projects go in `more` in the same file.
+To add a case study, copy `src/pages/work/needed-catalog-migration.astro`, add an entry to `projects` in `src/data/work.js` (it shows up on the home page and on `/work`), and add the page to `public/llms.txt`. The sitemap is generated from the same list in `src/pages/sitemap.xml.js`, so it needs no edit. Smaller projects go in `more` in the same file.
 
 ## Design tokens
 

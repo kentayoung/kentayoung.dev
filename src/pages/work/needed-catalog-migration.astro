@@ -1,0 +1,57 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+import productPage from "../../assets/case-studies/needed/product-page.png";
+import collection from "../../assets/case-studies/needed/collection.png";
+import cart from "../../assets/case-studies/needed/cart.png";
+
+const screens = [
+  {
+    tab: "Product",
+    image: productPage,
+    alt: "Needed product page with the product gallery on the left and the buy box on the right, showing a scent selector and subscription options for 30, 90, and 180 day supplies",
+    caption: "Product page: the buy box has scent options and subscription plans for 30, 90, and 180 days.",
+  },
+  {
+    tab: "Collection",
+    image: collection,
+    alt: "Needed collection page product cards showing monthly subscription prices and add to cart buttons",
+    caption: "Collection page: product cards show the monthly subscription price with a quick add button.",
+  },
+  {
+    tab: "Cart",
+    image: cart,
+    alt: "Needed cart drawer showing a free shipping progress bar and a subscription line item with its delivery schedule and quantity controls",
+    caption: "Cart drawer: free shipping progress and a subscription line item with its delivery schedule.",
+  },
+];
+const stack =["Shopify", "Liquid", "JavaScript", "Recharge", "Metafields"];
+const built = [
+  "Consolidated separate 1, 3, and 6 month listings (and sometimes a one-time listing) into one Shopify product per supplement, with a Delivery Schedule variant option.",
+  "Attached Recharge subscriptions at the variant level, with 28 day and 84 day cycles, instead of treating each supply length as its own product.",
+  "Built the product page delivery schedule selectors so the selected variant and the Recharge selling plan stay in sync, with events for both kinds of change, URL parameters and deep links, and keyboard and screen reader support.",
+  "Updated collection cards and quick add, side cart line items, cart interstitials, and product upsells for the new structure, including variant-specific pricing and messaging.",
+  "Added fallback behavior so the new code still supported products that had not been consolidated yet, letting the migration happen gradually instead of all at once.",
+  "Built and maintained the cart drawer as a web component, with a free shipping progress bar, subscription line items that show their delivery schedule, and a cart interstitial.",
+];
+const challenges = [
+  { title: "Migrating without breaking existing products", body: "Products were consolidated over time, so the theme had to support both structures at once. Cart messaging and product card logic fall back to the old behavior for anything that had not moved yet." },
+  { title: "Keeping variant and plan in sync", body: "The selected Shopify variant and the Recharge selling plan have to agree on the product page, in quick add, and in the cart. I handled events for both variant and plan changes so every surface stayed in step." },
+  { title: "References to products that no longer existed", body: "Interstitials, product cards, and upsells used to point at separate product handles. I created mappings so each of those resolves to the right variant of the consolidated product." },
+];
+---
+
+<CaseStudy
+  client="Needed"
+  tagline="A catalog migration to variant-based products with Recharge subscriptions."
+  description="Case study: consolidating the Needed catalog into variant-based Shopify products with Recharge subscriptions, and updating the product page, collections, cart, and upsells to match."
+  seoTitle="Needed: Catalog Migration on Shopify and Recharge | Kenta Young"
+  path="/work/needed-catalog-migration"
+  screens={screens}
+  stack={stack}
+  built={built}
+  challenges={challenges}
+>
+  <a href="https://thisisneeded.com" class="link-hover-seafoam" target="_blank" rel="noreferrer">Needed</a>{" "}
+  sold each supplement as separate products for each supply length: 1, 3, and 6 month, and sometimes one-time. That duplicated product content and complicated collection cards, subscriptions, product page logic, URLs, upsells, and analytics. I worked on consolidating each supplement into one Shopify product with a Delivery Schedule option, with Recharge subscriptions attached at the variant level, and then updated everything that touches a purchase. The result is fewer duplicate products, one canonical page per supplement, and a consistent path from product page to collection to cart to subscription. I did this as a Senior Software Developer at{" "}
+  <a href="https://thebeyondgroup.com/" class="link-hover-seafoam" target="_blank" rel="noreferrer">The Beyond Group</a>.
+</CaseStudy>

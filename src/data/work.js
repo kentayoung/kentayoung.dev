@@ -1,11 +1,19 @@
 export const projects = [
   {
-    slug: "needed",
+    slug: "needed-catalog-migration",
     client: "Needed",
-    title: "Custom subscription commerce",
+    title: "Catalog migration and subscriptions",
     summary:
-      "Rebuilt subscription purchasing on Shopify and Recharge, from variant-based products to custom selectors and cart upsells.",
+      "Consolidated separate 1, 3, and 6 month products into one variant-based Shopify product per supplement, with Recharge plans on each variant, and updated the product page, collections, cart, and upsells to match.",
     stack: ["Shopify", "Liquid", "JavaScript", "Recharge"],
+  },
+  {
+    slug: "needed-academy",
+    client: "Needed",
+    title: "Academy landing page",
+    summary:
+      "Led the build of a scroll-driven, animated landing page and application form, taking wireframes to a finished Shopify page.",
+    stack: ["Shopify", "Liquid", "JavaScript", "CSS animations"],
   },
   {
     slug: "fabfitfun",
@@ -37,7 +45,8 @@ export const more = [
   },
   {
     client: "Auri Nutrition",
-    summary: "Built cart upsell scripts and event tracking.",
+    summary:
+      "Built a custom Recharge customer portal with upsell, perks, and FAQ sections and GA4 event tracking, plus cart upsell scripts.",
   },
   {
     client: "Solawave",

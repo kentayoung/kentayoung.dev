@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Base from "./Base.astro";
 import Footer from "../components/Footer.astro";
 
-const { client, seoTitle, tagline, description, path, stack, built, challenges, screens = [] } = Astro.props;
+const { client, seoTitle, tagline, description, path, stack, built, challenges, screens = [], video } = Astro.props;
 const label = "eyebrow text-ink/60";
 const breadcrumbs = [
   { name: "Home", path: "/" },
@@ -36,6 +36,29 @@ const breadcrumbs = [
       <ul class="list-disc pl-5 leading-6 pb-10 space-y-2 marker:text-seafoam">
         {built.map((item) => <li>{item}</li>)}
       </ul>
+
+      {video && (
+        <>
+          <h2 class={`${label} pb-2`}>What it looks like</h2>
+          <p class="text-sm text-ink/60 pb-4">Screen recording of the live site, captured in October 2026.</p>
+          <figure class="pb-10">
+            <video
+              src={video.src}
+              poster={video.poster}
+              aria-label={video.alt}
+              width="1432"
+              height="814"
+              autoplay
+              muted
+              loop
+              playsinline
+              data-case-video
+              class="h-auto w-full rounded-card border border-line"
+            />
+            <figcaption class="pt-2 text-center text-sm leading-5 text-ink/60">{video.caption}</figcaption>
+          </figure>
+        </>
+      )}
 
       {screens.length > 0 && (
         <>
@@ -98,6 +121,13 @@ const breadcrumbs = [
 </Base>
 
 <script>
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("[data-case-video]").forEach((video) => {
+      video.pause();
+      video.controls = true;
+    });
+  }
+
   document.querySelectorAll("[data-screens]").forEach((root) => {
     const nav = root.querySelector("[data-screens-nav]");
     const tabs = [...nav.querySelectorAll("[role=tab]")];
