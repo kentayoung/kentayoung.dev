@@ -45,7 +45,8 @@ export const more = [
   },
   {
     client: "Auri Nutrition",
-    summary: "Built cart upsell scripts and event tracking.",
+    summary:
+      "Built a custom Recharge customer portal with upsell, perks, and FAQ sections and GA4 event tracking, plus cart upsell scripts.",
   },
   {
     client: "Solawave",
