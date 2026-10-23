@@ -6,7 +6,7 @@
 
 - [Home](https://kentayoung.dev/): About, skills, and contact information.
 - [Work](https://kentayoung.dev/work): All case studies and other projects.
-- [Needed case study](https://kentayoung.dev/work/needed): Custom subscription purchasing on Shopify and Recharge.
+- [Needed case study](https://kentayoung.dev/work/needed-catalog-migration): Consolidating a subscription catalog into variant-based Shopify products with Recharge plans.
 - [Needed Academy case study](https://kentayoung.dev/work/needed-academy): An animated, scroll-driven landing page and application form built on Shopify.
 - [FabFitFun case study](https://kentayoung.dev/work/fabfitfun): Configurable page modules in React, TypeScript, and a headless CMS.
 - [HU Kitchen case study](https://kentayoung.dev/work/hu-kitchen): Building a Shopify storefront, from product pages to cart upsells and accessibility fixes.

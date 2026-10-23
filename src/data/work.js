@@ -1,10 +1,10 @@
 export const projects = [
   {
-    slug: "needed",
+    slug: "needed-catalog-migration",
     client: "Needed",
-    title: "Custom subscription commerce",
+    title: "Catalog migration and subscriptions",
     summary:
-      "Rebuilt subscription purchasing on Shopify and Recharge, from variant-based products to custom selectors and cart upsells.",
+      "Consolidated separate 1, 3, and 6 month products into one variant-based Shopify product per supplement, with Recharge plans on each variant, and updated the product page, collections, cart, and upsells to match.",
     stack: ["Shopify", "Liquid", "JavaScript", "Recharge"],
   },
   {
