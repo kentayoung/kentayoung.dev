@@ -9,14 +9,12 @@ const galleries = [
     description:
       "My love for photography spawned from my passion for cars. From just wanting to take pictures of my friends' cars to traveling across the US to shoot automotive events, it's been a fun journey. I'm proud to have had my work featured in magazines and across the web.",
     images: AutomotiveImages,
-    top: "mb-2",
   },
   {
     title: "Travel",
     description:
       "I've had the opportunity to travel to many places around the world and capture a lot of interesting moments. These are some of my favorite photos from my travels.",
     images: TravelImages,
-    top: "mt-8 mb-2",
   },
 ];
 ---
@@ -31,34 +29,41 @@ const galleries = [
   ]}
 >
   <div class="min-h-[calc(100vh-150px)] mt-nav pt-8">
-    <section class="container-wide">
-      <h1 class="section-title">Photography</h1>
-      <div class="flex flex-col max-w-full">
-        {galleries.map(({ title, description, images, top }) => (
-          <>
-            <h2 class={`text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-ink ${top}`}>{title}</h2>
-            <p class="mb-4 max-w-3xl text-sm leading-6 text-ink/60">{description}</p>
-            <ul class="flex flex-wrap gap-1 p-0 m-0 list-none">
-              {images.map(({ thumbSrc, alt, width, height }) => (
-                <li
-                  style={`--r:${width / height}`}
-                  class="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
+    <div>
+      <h1 class="section-title container-wide">Photography</h1>
+      {galleries.map(({ title, description, images }) => (
+        <section aria-labelledby={`gallery-${title.toLowerCase()}`} class="pb-section">
+          <div class="container-wide pb-8">
+            <h2 id={`gallery-${title.toLowerCase()}`} class="pb-2 text-[calc(1rem+0.5vw)] font-light tracking-[0.4rem] text-ink">{title}</h2>
+            <p class="max-w-(--container-page) py-1.25 text-base leading-5 text-ink">{description}</p>
+          </div>
+          <ul class="container-wide flex flex-wrap gap-1 p-0 m-0 list-none">
+            {images.map(({ thumbSrc, alt, width, height }) => (
+              <li
+                style={`--r:${width / height}`}
+                class="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
+              >
+                <button
+                  type="button"
+                  data-large={thumbSrc.replace("w_1000", "w_2000")}
+                  aria-label={`View larger: ${alt}`}
+                  class="block h-full w-full cursor-zoom-in"
                 >
-                  <button
-                    type="button"
-                    data-large={thumbSrc.replace("w_1000", "w_2000")}
-                    aria-label={`View larger: ${alt}`}
-                    class="block h-full w-full cursor-zoom-in"
-                  >
-                    <img src={thumbSrc} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" class="pointer-events-none block h-full w-full select-none" />
-                  </button>
-                </li>
-              ))}
-              <li style="flex-grow:999;flex-basis:0"></li>
-            </ul>
-          </>
-        ))}
-      </div>
+                  <img src={thumbSrc} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" class="pointer-events-none block h-full w-full select-none" />
+                </button>
+              </li>
+            ))}
+            <li style="flex-grow:999;flex-basis:0"></li>
+          </ul>
+        </section>
+      ))}
+    </div>
+    <section aria-labelledby="photo-contact" class="container-wide pb-section">
+      <h2 id="photo-contact" class="pb-2 text-[calc(1rem+0.5vw)] font-light tracking-[0.4rem] text-ink">Prints and licensing</h2>
+      <p class="max-w-(--container-page) py-1.25 pb-6 text-base leading-5 text-ink">
+        Interested in a print, or want to use one of these photos? Send me a note and I'll get back to you.
+      </p>
+      <a href="mailto:kenta@kentayoung.dev?subject=Photography%20inquiry" class="btn btn-primary inline-block">Email me</a>
     </section>
   </div>
   <dialog
