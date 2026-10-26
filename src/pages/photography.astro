@@ -44,7 +44,14 @@ const galleries = [
                   style={`--r:${width / height}`}
                   class="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
                 >
-                  <img src={thumbSrc} alt={alt} width={width} height={height} loading="lazy" decoding="async" class="w-full h-full block" />
+                  <button
+                    type="button"
+                    data-large={thumbSrc.replace("w_1000", "w_2000")}
+                    aria-label={`View larger: ${alt}`}
+                    class="block h-full w-full cursor-zoom-in"
+                  >
+                    <img src={thumbSrc} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" class="pointer-events-none block h-full w-full select-none" />
+                  </button>
                 </li>
               ))}
               <li style="flex-grow:999;flex-basis:0"></li>
@@ -54,5 +61,137 @@ const galleries = [
       </div>
     </section>
   </div>
+  <dialog
+    id="lightbox"
+    aria-label="Photo viewer"
+    class="m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 text-ink backdrop:bg-neutral-800/95"
+  >
+    <div id="lightbox-stage" class="flex h-full w-full flex-col items-center justify-center gap-3 px-4 pb-3 pt-16 sm:px-20 sm:pb-16">
+      <img id="lightbox-img" alt="" draggable="false" class="pointer-events-none min-h-0 max-w-full flex-1 select-none object-contain" />
+      <p id="lightbox-caption" class="flex min-h-12 items-center justify-center px-14 text-center text-sm text-ink/60 sm:min-h-0 sm:px-0"></p>
+    </div>
+    <button type="button" id="lightbox-close" aria-label="Close" class="lightbox-btn right-3 top-3">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <button type="button" id="lightbox-prev" aria-label="Previous photo" class="lightbox-btn bottom-3 left-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5l-7 7 7 7" /></svg>
+    </button>
+    <button type="button" id="lightbox-next" aria-label="Next photo" class="lightbox-btn bottom-3 right-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5l7 7-7 7" /></svg>
+    </button>
+  </dialog>
   <Footer />
 </Base>
+
+<style>
+  .lightbox-btn {
+    position: absolute;
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgb(0 0 0 / 0.4);
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+  .lightbox-btn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .lightbox-btn:hover {
+    background: var(--color-seafoam);
+    color: var(--color-dark);
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("#lightbox")!;
+  const img = document.querySelector<HTMLImageElement>("#lightbox-img")!;
+  const caption = document.querySelector<HTMLElement>("#lightbox-caption")!;
+  let group: HTMLButtonElement[] = [];
+  let index = 0;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let token = 0;
+
+  const show = async (i: number, direction = 0) => {
+    index = (i + group.length) % group.length;
+    const current = ++token;
+    img.getAnimations().forEach((animation) => animation.cancel());
+    const animate = direction !== 0 && dialog.open && !reducedMotion.matches;
+    if (animate) {
+      await img
+        .animate(
+          { opacity: [1, 0], transform: ["none", `translateX(${-direction * 40}px)`] },
+          { duration: 120, easing: "ease-in", fill: "forwards" },
+        )
+        .finished.catch(() => {});
+      if (current !== token) return;
+      img.getAnimations().forEach((animation) => animation.cancel());
+    }
+    render();
+    if (animate) {
+      img.animate(
+        { opacity: [0, 1], transform: [`translateX(${direction * 40}px)`, "none"] },
+        { duration: 160, easing: "ease-out" },
+      );
+    }
+  };
+
+  const render = () => {
+    const thumb = group[index].querySelector("img")!;
+    img.src = group[index].dataset.large!;
+    img.alt = thumb.alt;
+    caption.textContent = `${thumb.alt} (${index + 1} of ${group.length})`;
+    [index + 1, index - 1].forEach((n) => {
+      new Image().src = group[(n + group.length) % group.length].dataset.large!;
+    });
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("button[data-large]").forEach((button) => {
+    button.addEventListener("click", () => {
+      group = [...button.closest("ul")!.querySelectorAll<HTMLButtonElement>("button[data-large]")];
+      show(group.indexOf(button));
+      dialog.showModal();
+    });
+  });
+
+  document.querySelector("#lightbox-close")!.addEventListener("click", () => dialog.close());
+  document.querySelector("#lightbox-prev")!.addEventListener("click", () => show(index - 1, -1));
+  document.querySelector("#lightbox-next")!.addEventListener("click", () => show(index + 1, 1));
+
+  const stage = document.querySelector("#lightbox-stage");
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog || e.target === stage) dialog.close();
+  });
+
+  document.addEventListener("contextmenu", (e) => {
+    if ((e.target as Element).closest("button[data-large], #lightbox")) e.preventDefault();
+  });
+
+  dialog.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(index - 1, -1);
+    if (e.key === "ArrowRight") show(index + 1, 1);
+  });
+
+  let startX = 0;
+  dialog.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
+  dialog.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) {
+      const direction = dx < 0 ? 1 : -1;
+      show(index + direction, direction);
+    }
+  });
+
+  dialog.addEventListener("close", () => {
+    img.removeAttribute("src");
+  });
+</script>
