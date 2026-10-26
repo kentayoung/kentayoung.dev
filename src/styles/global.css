@@ -121,6 +121,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
 iframe {
   z-index: 0 !important;
 }

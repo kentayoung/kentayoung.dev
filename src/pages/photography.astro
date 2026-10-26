@@ -9,14 +9,12 @@ const galleries = [
     description:
       "My love for photography spawned from my passion for cars. From just wanting to take pictures of my friends' cars to traveling across the US to shoot automotive events, it's been a fun journey. I'm proud to have had my work featured in magazines and across the web.",
     images: AutomotiveImages,
-    top: "mb-2",
   },
   {
     title: "Travel",
     description:
       "I've had the opportunity to travel to many places around the world and capture a lot of interesting moments. These are some of my favorite photos from my travels.",
     images: TravelImages,
-    top: "mt-8 mb-2",
   },
 ];
 ---
@@ -31,28 +29,174 @@ const galleries = [
   ]}
 >
   <div class="min-h-[calc(100vh-150px)] mt-nav pt-8">
-    <section class="container-wide">
-      <h1 class="section-title">Photography</h1>
-      <div class="flex flex-col max-w-full">
-        {galleries.map(({ title, description, images, top }) => (
-          <>
-            <h2 class={`text-[calc(1rem+0.5vw)] tracking-[0.4rem] font-light text-ink ${top}`}>{title}</h2>
-            <p class="mb-4 max-w-3xl text-sm leading-6 text-ink/60">{description}</p>
-            <ul class="flex flex-wrap gap-1 p-0 m-0 list-none">
-              {images.map(({ thumbSrc, alt, width, height }) => (
-                <li
-                  style={`--r:${width / height}`}
-                  class="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
+    <div>
+      <h1 class="section-title container-wide">Photography</h1>
+      {galleries.map(({ title, description, images }) => (
+        <section aria-labelledby={`gallery-${title.toLowerCase()}`} class="pb-section">
+          <div class="container-wide pb-8">
+            <h2 id={`gallery-${title.toLowerCase()}`} class="pb-2 text-[calc(1rem+0.5vw)] font-light tracking-[0.4rem] text-ink">{title}</h2>
+            <p class="max-w-(--container-page) py-1.25 text-base leading-5 text-ink">{description}</p>
+          </div>
+          <ul class="container-wide flex flex-wrap gap-1 p-0 m-0 list-none">
+            {images.map(({ thumbSrc, alt, width, height }) => (
+              <li
+                style={`--r:${width / height}`}
+                class="w-full sm:grow-(--r) sm:basis-[calc(var(--r)*360px)] aspect-(--r)"
+              >
+                <button
+                  type="button"
+                  data-large={thumbSrc.replace("w_1000", "w_2000")}
+                  aria-label={`View larger: ${alt}`}
+                  class="block h-full w-full cursor-zoom-in"
                 >
-                  <img src={thumbSrc} alt={alt} width={width} height={height} loading="lazy" decoding="async" class="w-full h-full block" />
-                </li>
-              ))}
-              <li style="flex-grow:999;flex-basis:0"></li>
-            </ul>
-          </>
-        ))}
-      </div>
+                  <img src={thumbSrc} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" class="pointer-events-none block h-full w-full select-none" />
+                </button>
+              </li>
+            ))}
+            <li style="flex-grow:999;flex-basis:0"></li>
+          </ul>
+        </section>
+      ))}
+    </div>
+    <section aria-labelledby="photo-contact" class="container-wide pb-section">
+      <h2 id="photo-contact" class="pb-2 text-[calc(1rem+0.5vw)] font-light tracking-[0.4rem] text-ink">Prints and licensing</h2>
+      <p class="max-w-(--container-page) py-1.25 pb-6 text-base leading-5 text-ink">
+        Interested in a print, or want to use one of these photos? Send me a note and I'll get back to you.
+      </p>
+      <a href="mailto:kenta@kentayoung.dev?subject=Photography%20inquiry" class="btn btn-primary inline-block">Email me</a>
     </section>
   </div>
+  <dialog
+    id="lightbox"
+    aria-label="Photo viewer"
+    class="m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 text-ink backdrop:bg-neutral-800/95"
+  >
+    <div id="lightbox-stage" class="flex h-full w-full flex-col items-center justify-center gap-3 px-4 pb-3 pt-16 sm:px-20 sm:pb-16">
+      <img id="lightbox-img" alt="" draggable="false" class="pointer-events-none min-h-0 max-w-full flex-1 select-none object-contain" />
+      <p id="lightbox-caption" class="flex min-h-12 items-center justify-center px-14 text-center text-sm text-ink/60 sm:min-h-0 sm:px-0"></p>
+    </div>
+    <button type="button" id="lightbox-close" aria-label="Close" class="lightbox-btn right-3 top-3">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <button type="button" id="lightbox-prev" aria-label="Previous photo" class="lightbox-btn bottom-3 left-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5l-7 7 7 7" /></svg>
+    </button>
+    <button type="button" id="lightbox-next" aria-label="Next photo" class="lightbox-btn bottom-3 right-3 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5l7 7-7 7" /></svg>
+    </button>
+  </dialog>
   <Footer />
 </Base>
+
+<style>
+  .lightbox-btn {
+    position: absolute;
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgb(0 0 0 / 0.4);
+    color: var(--color-ink);
+    cursor: pointer;
+  }
+  .lightbox-btn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .lightbox-btn:hover {
+    background: var(--color-seafoam);
+    color: var(--color-dark);
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("#lightbox")!;
+  const img = document.querySelector<HTMLImageElement>("#lightbox-img")!;
+  const caption = document.querySelector<HTMLElement>("#lightbox-caption")!;
+  let group: HTMLButtonElement[] = [];
+  let index = 0;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let token = 0;
+
+  const show = async (i: number, direction = 0) => {
+    index = (i + group.length) % group.length;
+    const current = ++token;
+    img.getAnimations().forEach((animation) => animation.cancel());
+    const animate = direction !== 0 && dialog.open && !reducedMotion.matches;
+    if (animate) {
+      await img
+        .animate(
+          { opacity: [1, 0], transform: ["none", `translateX(${-direction * 40}px)`] },
+          { duration: 120, easing: "ease-in", fill: "forwards" },
+        )
+        .finished.catch(() => {});
+      if (current !== token) return;
+      img.getAnimations().forEach((animation) => animation.cancel());
+    }
+    render();
+    if (animate) {
+      img.animate(
+        { opacity: [0, 1], transform: [`translateX(${direction * 40}px)`, "none"] },
+        { duration: 160, easing: "ease-out" },
+      );
+    }
+  };
+
+  const render = () => {
+    const thumb = group[index].querySelector("img")!;
+    img.src = group[index].dataset.large!;
+    img.alt = thumb.alt;
+    caption.textContent = `${thumb.alt} (${index + 1} of ${group.length})`;
+    [index + 1, index - 1].forEach((n) => {
+      new Image().src = group[(n + group.length) % group.length].dataset.large!;
+    });
+  };
+
+  document.querySelectorAll<HTMLButtonElement>("button[data-large]").forEach((button) => {
+    button.addEventListener("click", () => {
+      group = [...button.closest("ul")!.querySelectorAll<HTMLButtonElement>("button[data-large]")];
+      show(group.indexOf(button));
+      dialog.showModal();
+    });
+  });
+
+  document.querySelector("#lightbox-close")!.addEventListener("click", () => dialog.close());
+  document.querySelector("#lightbox-prev")!.addEventListener("click", () => show(index - 1, -1));
+  document.querySelector("#lightbox-next")!.addEventListener("click", () => show(index + 1, 1));
+
+  const stage = document.querySelector("#lightbox-stage");
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog || e.target === stage) dialog.close();
+  });
+
+  document.addEventListener("contextmenu", (e) => {
+    if ((e.target as Element).closest("button[data-large], #lightbox")) e.preventDefault();
+  });
+
+  dialog.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(index - 1, -1);
+    if (e.key === "ArrowRight") show(index + 1, 1);
+  });
+
+  let startX = 0;
+  dialog.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
+  dialog.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) {
+      const direction = dx < 0 ? 1 : -1;
+      show(index + direction, direction);
+    }
+  });
+
+  dialog.addEventListener("close", () => {
+    img.removeAttribute("src");
+  });
+</script>
