@@ -1,6 +1,7 @@
 ---
 import Icon from "./Icon.astro";
 const links = [
+  { id: "email-KentaYoung", href: "mailto:kenta@kentayoung.dev", icon: "email", label: "Email" },
   { id: "linkedIn-KentaYoung", href: "https://www.linkedin.com/in/kentayoung", icon: "linkedin", label: "LinkedIn" },
   { id: "instagram-KentaYoung", href: "https://instagram.com/kenta_young", icon: "instagram", label: "Instagram" },
   { id: "facebook-KentaYoung", href: "https://www.facebook.com/kentayoungphotography", icon: "facebook", label: "Facebook" },
@@ -10,7 +11,14 @@ const links = [
 
 <footer class="flex justify-center py-6">
   {links.map(({ id, href, icon, label }) => (
-    <a id={id} href={href} target="_blank" rel="noreferrer" class="icon-circle" aria-label={label}>
+    <a
+      id={id}
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={href.startsWith("http") ? "noreferrer" : undefined}
+      class="icon-circle"
+      aria-label={label}
+    >
       <Icon name={icon} />
     </a>
   ))}
