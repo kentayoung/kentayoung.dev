@@ -124,30 +124,37 @@ const galleries = [
   let index = 0;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let token = 0;
+  let leaving = false;
 
   const show = async (i: number, direction = 0) => {
     index = (i + group.length) % group.length;
-    const current = ++token;
-    img.getAnimations().forEach((animation) => animation.cancel());
     const animate = direction !== 0 && dialog.open && !reducedMotion.matches;
-    if (animate) {
-      await img
-        .animate(
-          { opacity: [1, 0], transform: ["none", `translateX(${-direction * 40}px)`] },
-          { duration: 120, easing: "ease-in", fill: "forwards" },
-        )
-        .finished.catch(() => {});
-      if (current !== token) return;
+    if (!animate) {
       img.getAnimations().forEach((animation) => animation.cancel());
+      render();
+      return;
     }
-    render();
-    if (animate) {
-      img.animate(
-        { opacity: [0, 1], transform: [`translateX(${direction * 40}px)`, "none"] },
-        { duration: 160, easing: "ease-out" },
-      );
-    }
+    if (leaving) return;
+    leaving = true;
+    const { opacity, transform } = getComputedStyle(img);
+    img.getAnimations().forEach((animation) => animation.cancel());
+    await img
+      .animate(
+        { opacity: [opacity, 0], transform: [transform, `translateX(${-direction * 40}px)`] },
+        { duration: 120, easing: "ease-in", fill: "forwards" },
+      )
+      .finished.catch(() => {});
+    let shown: number;
+    do {
+      shown = index;
+      await render();
+    } while (shown !== index);
+    leaving = false;
+    img.getAnimations().forEach((animation) => animation.cancel());
+    img.animate(
+      { opacity: [0, 1], transform: [`translateX(${direction * 40}px)`, "none"] },
+      { duration: 160, easing: "ease-out" },
+    );
   };
 
   const render = () => {
@@ -158,6 +165,7 @@ const galleries = [
     [index + 1, index - 1].forEach((n) => {
       new Image().src = group[(n + group.length) % group.length].dataset.large!;
     });
+    return img.decode().catch(() => {});
   };
 
   document.querySelectorAll<HTMLButtonElement>("button[data-large]").forEach((button) => {
