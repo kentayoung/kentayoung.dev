@@ -165,6 +165,7 @@ const galleries = [
       group = [...button.closest("ul")!.querySelectorAll<HTMLButtonElement>("button[data-large]")];
       show(group.indexOf(button));
       dialog.showModal();
+      (window as any).gtag?.("event", "photo_open", { photo: img.alt });
     });
   });
 

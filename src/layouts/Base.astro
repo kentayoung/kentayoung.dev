@@ -101,6 +101,22 @@ const structuredData = {
         }
       </script>
     )}
+    <script>
+      document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) return;
+        const link = event.target.closest<HTMLAnchorElement>("a[href]");
+        const gtag = (window as any).gtag;
+        if (!link || !gtag) return;
+        const url = new URL(link.href, location.href);
+        if (url.protocol === "mailto:") {
+          gtag("event", "email_click", { page_path: location.pathname });
+        } else if (url.origin === location.origin && url.pathname.toLowerCase().endsWith(".pdf")) {
+          gtag("event", "resume_click", { file_name: url.pathname.split("/").pop() });
+        } else if (url.origin !== location.origin) {
+          gtag("event", "outbound_click", { link_domain: url.hostname });
+        }
+      });
+    </script>
   </head>
   <body>
     <a
