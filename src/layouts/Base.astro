@@ -101,6 +101,14 @@ const structuredData = {
         }
       </script>
     )}
+    <script>
+      import { trackLinkClick } from "../scripts/analytics.js";
+
+      document.addEventListener("click", trackLinkClick);
+      document.addEventListener("auxclick", event => {
+        if (event.button === 1) trackLinkClick(event);
+      }, { passive: true });
+    </script>
   </head>
   <body>
     <a

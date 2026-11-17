@@ -46,6 +46,8 @@ const galleries = [
                 <button
                   type="button"
                   data-large={thumbSrc.replace("w_1000", "w_2000")}
+                  data-gallery={title.toLowerCase()}
+                  data-photo-id={thumbSrc.split("/").pop()}
                   aria-label={`View larger: ${alt}`}
                   class="block h-full w-full cursor-zoom-in"
                 >
@@ -58,12 +60,12 @@ const galleries = [
         </section>
       ))}
     </div>
-    <section aria-labelledby="photo-contact" class="container-wide pb-section">
+    <section data-analytics-location="photo_contact" aria-labelledby="photo-contact" class="container-wide pb-section">
       <h2 id="photo-contact" class="pb-2 text-[calc(1rem+0.5vw)] font-light tracking-[0.4rem] text-ink">Prints and licensing</h2>
       <p class="max-w-(--container-page) py-1.25 pb-6 text-base leading-5 text-ink">
         Interested in a print, or want to use one of these photos? Send me a note and I'll get back to you.
       </p>
-      <a href="mailto:kenta@kentayoung.dev?subject=Photography%20inquiry" class="btn btn-primary inline-block">Email me</a>
+      <a href="mailto:kenta@kentayoung.dev?subject=Photography%20inquiry" data-contact-intent="photography" class="btn btn-primary inline-block">Email me</a>
     </section>
   </div>
   <dialog
@@ -117,6 +119,8 @@ const galleries = [
 </style>
 
 <script>
+  import { trackEvent } from "../scripts/analytics.js";
+
   const dialog = document.querySelector<HTMLDialogElement>("#lightbox")!;
   const img = document.querySelector<HTMLImageElement>("#lightbox-img")!;
   const caption = document.querySelector<HTMLElement>("#lightbox-caption")!;
@@ -165,6 +169,7 @@ const galleries = [
       group = [...button.closest("ul")!.querySelectorAll<HTMLButtonElement>("button[data-large]")];
       show(group.indexOf(button));
       dialog.showModal();
+      trackEvent("photo_open", { gallery: button.dataset.gallery, photo_id: button.dataset.photoId });
     });
   });
 
