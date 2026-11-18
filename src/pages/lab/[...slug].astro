@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Footer from "../../components/Footer.astro";
+import { labEnabled } from "../../data/lab.js";
+
+export async function getStaticPaths() {
+  if (!import.meta.env.DEV && !labEnabled) return [];
+  const entries = (await getCollection("lab", ({ data }) => import.meta.env.DEV || !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return [
+    { params: { slug: undefined }, props: { entries } },
+    ...entries.map(entry => ({ params: { slug: entry.id }, props: { entry } })),
+  ];
+}
+
+const { entry, entries = [] } = Astro.props;
+const Content = entry ? (await render(entry)).Content : null;
+const title = entry?.data.title ?? "In the lab";
+const description = entry?.data.description ?? "Notes on what I'm building, testing, and figuring out.";
+const path = entry ? `/lab/${entry.id}/` : "/lab/";
+const preview = import.meta.env.DEV || !labEnabled || entry?.data.draft;
+const formatDate = date => new Intl.DateTimeFormat("en-US", {
+  month: "long", day: "numeric", year: "numeric", timeZone: "UTC",
+}).format(date);
+---
+
+<Base
+  title={`${title} | Kenta Young`}
+  description={description}
+  path={path}
+  breadcrumbs={[
+    { name: "Home", path: "/" },
+    { name: "In the lab", path: "/lab/" },
+    ...(entry ? [{ name: title, path }] : []),
+  ]}
+>
+  {preview && <meta slot="head" name="robots" content="noindex, nofollow" />}
+  <div class="min-h-[calc(100vh-150px)] mt-nav">
+    <div class="container-page py-section text-ink">
+      {preview && (
+        <aside class="mb-10 rounded-card border border-seafoam/40 bg-surface p-4 text-sm leading-6 text-ink/80">
+          Development preview. Drafts are visible here but are never included in production builds.
+        </aside>
+      )}
+      {entry ? (
+        <article class="lab-article">
+          <a href="/lab/" class="link-hover-seafoam text-sm">&larr; All lab notes</a>
+          <header class="pt-8 pb-10 border-b border-line mb-10">
+            <p class="eyebrow text-seafoam pb-4">In the lab</p>
+            <h1 class="section-title leading-tight">{title}</h1>
+            <p class="text-lg leading-8 text-ink/80 pb-6">{description}</p>
+            <div class="flex flex-wrap items-center gap-3 text-sm text-ink/60">
+              <time datetime={entry.data.date.toISOString().slice(0, 10)}>{formatDate(entry.data.date)}</time>
+              {entry.data.draft && <span class="pill">Draft</span>}
+              <span class="pill pill-filled">{entry.data.status}</span>
+            </div>
+            <ul aria-label="Topics" class="flex flex-wrap gap-2 pt-5">
+              {entry.data.topics.map(topic => <li class="text-sm text-ink/60">{topic}</li>)}
+            </ul>
+          </header>
+          <div class="lab-prose"><Content /></div>
+        </article>
+      ) : (
+        <section aria-labelledby="lab-heading">
+          <p class="eyebrow text-seafoam pb-4">Experiments &amp; notes</p>
+          <h1 id="lab-heading" class="section-title">In the lab</h1>
+          <p class="text-lg leading-8 text-ink/80 pb-10">{description}</p>
+          {entries.length === 0 && <p class="text-ink/60">More notes soon.</p>}
+          <ul class="grid gap-6">
+            {entries.map(note => (
+              <li class="card border border-line p-6 md:p-8">
+                <div class="flex flex-wrap items-center gap-3 text-sm text-ink/60 pb-4">
+                  <time datetime={note.data.date.toISOString().slice(0, 10)}>{formatDate(note.data.date)}</time>
+                  {note.data.draft && <span class="pill">Draft</span>}
+                  <span>{note.data.status}</span>
+                </div>
+                <h2 class="text-xl leading-8 pb-3">
+                  <a href={`/lab/${note.id}/`} class="link-hover-seafoam">{note.data.title}</a>
+                </h2>
+                <p class="text-ink/80 leading-7">{note.data.description}</p>
+                <ul aria-label="Topics" class="flex flex-wrap gap-x-4 gap-y-2 pt-5 text-sm text-ink/60">
+                  {note.data.topics.map(topic => <li>{topic}</li>)}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </div>
+  <Footer />
+</Base>
+
+<style>
+  .lab-article { max-width: 46rem; }
+  .lab-prose { font-size: 1rem; line-height: 1.9; color: var(--color-ink); }
+  .lab-prose :global(p) { margin-bottom: 1.5rem; }
+  .lab-prose :global(h2) { margin-top: 2.75rem; margin-bottom: 1rem; font-size: 1.4rem; line-height: 1.5; font-weight: 400; }
+  .lab-prose :global(h3) { margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.15rem; }
+  .lab-prose :global(a) { color: var(--color-seafoam); text-decoration: underline; text-underline-offset: 0.2em; }
+  .lab-prose :global(ul), .lab-prose :global(ol) { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+  .lab-prose :global(ul) { list-style: disc; }
+  .lab-prose :global(ol) { list-style: decimal; }
+  .lab-prose :global(li) { margin-bottom: 0.5rem; }
+  .lab-prose :global(pre) { overflow-x: auto; padding: 1rem; border-radius: var(--radius-card); margin-bottom: 1.5rem; }
+  .lab-prose :global(img) { max-width: 100%; height: auto; border-radius: var(--radius-card); }
+  .lab-prose :global(blockquote) { border-left: 2px solid var(--color-seafoam); padding-left: 1.25rem; margin-bottom: 1.5rem; }
+</style>
