@@ -1,4 +1,6 @@
 import { projects } from "../data/work.js";
+import { getCollection } from "astro:content";
+import { labEnabled } from "../data/lab.js";
 
 const pages = [
   { path: "/", priority: "1.0" },
@@ -7,8 +9,15 @@ const pages = [
   { path: "/photography", priority: "0.8" },
 ];
 
-export const GET = ({ site }) => {
-  const urls = pages
+export const GET = async ({ site }) => {
+  const labPages = labEnabled
+    ? [
+        { path: "/lab/", priority: "0.7" },
+        ...(await getCollection("lab", ({ data }) => !data.draft))
+          .map(({ id }) => ({ path: `/lab/${id}/`, priority: "0.6" })),
+      ]
+    : [];
+  const urls = [...pages, ...labPages]
     .map(
       ({ path, priority }) => `  <url>
     <loc>${new URL(path, site).href}</loc>

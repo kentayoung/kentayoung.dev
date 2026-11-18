@@ -109,6 +109,50 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs node --test tests/*.tes
 
 Override `ANALYTICS_PREVIEW_URL` if using another preview port. Without `PLAYWRIGHT_MODULE`, the browser test is explicitly skipped. The browser test checks event dispatch and the local GA queue, not delivery into the real GA4 property.
 
+## In the lab
+
+Lab notes live in `src/content/lab/*.md`. The index is `/lab/` and each filename becomes an entry URL, such as `/lab/old-pc-ai-server/`. They use the site's existing typography and colors, with no new client-side dependencies.
+
+The lab is intentionally unreleased: `labEnabled` is `false` in `src/data/lab.js`. Development mode serves the index and drafts directly, with a preview notice and `noindex, nofollow`. Production builds emit no lab routes, homepage section, navigation item, or sitemap entries while that flag is off. This is build-time exclusion, not access control: keep the development server private. Source files are still visible to anyone who can read the repository.
+
+To add a note:
+
+```markdown
+---
+title: An experiment worth writing about
+description: A short summary for the index and page metadata.
+date: 2026-11-18
+draft: true
+topics:
+  - Linux
+status: Ongoing
+---
+
+Write the entry in Markdown here.
+```
+
+`draft` defaults to `true`. Status can be `Ongoing`, `Complete`, or `Paused`. Notes appear newest first; the homepage shows up to three published entries once the lab is enabled.
+
+When a few entries are ready, review their content and dates, set those entries to `draft: false`, then set `labEnabled` to `true`. That enables the routes, navigation, homepage previews, and sitemap together. Remaining drafts stay out of production. Update the unreleased-state test expectations when intentionally launching. Enabling the section does not deploy it; the usual commit and release workflow still applies.
+
+Verification, after installing dependencies:
+
+```bash
+npm run build
+node --test tests/analytics.test.js tests/lab-build.test.js tests/lab-release.test.js
+```
+
+`lab-build.test.js` checks the actual production output for hidden pages, links, and draft content. `lab-release.test.js` builds an isolated temporary copy with the flag enabled and deliberately unsorted published fixtures, checking launch wiring, ordering, and draft exclusion without changing this checkout.
+
+For the lab browser test, run a development server separately, then use the same external Playwright installation described above:
+
+```bash
+npm run dev -- --host 127.0.0.1 --port 4323
+LAB_DEV_URL=http://127.0.0.1:4323 PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs node --test tests/lab.browser.test.js
+```
+
+The browser test checks the draft preview, index-to-entry navigation, metadata, and desktop/mobile widths. `LAB_PRODUCTION_URL` can point at a separate production preview to additionally verify that direct lab URLs return 404. The existing analytics browser test still needs a production preview via `ANALYTICS_PREVIEW_URL`.
+
 ## Deployment
 
 Deployed automatically to Firebase Hosting on push to `main` via GitHub Actions. Requires the following repository secrets:

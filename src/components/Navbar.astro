@@ -1,9 +1,11 @@
 ---
 import Icon from "./Icon.astro";
+import { labEnabled } from "../data/lab.js";
 const items = [
   { display: "home", href: "/#home" },
   { display: "about", href: "/#about" },
   { display: "work", href: "/work", page: "/work" },
+  ...(labEnabled ? [{ display: "lab", href: "/lab/", page: "/lab" }] : []),
   { display: "skills", href: "/#skills" },
   { display: "contact", href: "/#contact" },
   { display: "photography", href: "/photography", page: "/photography" },

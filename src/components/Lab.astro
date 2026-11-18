@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import { labEnabled } from "../data/lab.js";
+
+const entries = labEnabled
+  ? (await getCollection("lab", ({ data }) => !data.draft))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3)
+  : [];
+---
+
+{entries.length > 0 && (
+  <section id="lab" aria-labelledby="home-lab-heading" class="container-page py-section text-ink">
+    <div class="flex flex-wrap items-baseline justify-between gap-4 pb-4">
+      <h2 id="home-lab-heading" class="section-title">In the lab</h2>
+      <a href="/lab/" class="link-hover-seafoam text-sm">All lab notes &rarr;</a>
+    </div>
+    <p class="text-ink/80 pb-8">Notes on what I'm building, testing, and figuring out.</p>
+    <ul class="grid gap-6 md:grid-cols-3">
+      {entries.map(entry => (
+        <li class="card border border-line p-6">
+          <p class="eyebrow text-seafoam pb-4">{entry.data.status}</p>
+          <h3 class="text-lg leading-7 pb-3">
+            <a href={`/lab/${entry.id}/`} class="link-hover-seafoam">{entry.data.title}</a>
+          </h3>
+          <p class="text-sm leading-6 text-ink/80">{entry.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
