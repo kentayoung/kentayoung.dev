@@ -64,33 +64,6 @@ npm run generate   # fetch images from Cloudinary
 npm run build      # runs generate then builds
 ```
 
-## Analytics
-
-GA4 initializes only in production builds on `kentayoung.dev` and `www.kentayoung.dev`. The shared click handler and photography lightbox use `src/scripts/analytics.js`; they do nothing when `gtag` is unavailable and never prevent navigation or open a second window.
-
-| Event | Trigger | Custom parameters |
-|---|---|---|
-| `email_click` | A `mailto:` link | `link_location`, `contact_intent` (`general` or `photography`) |
-| `resume_click` | A same-site link marked `data-analytics-event="resume_click"` | `link_location`, `file_name` |
-| `case_study_click` | A link to `/work/<slug>` | `link_location`, `project_slug` |
-| `social_click` | A LinkedIn, GitHub, Instagram, or Facebook link | `link_location`, `platform`, `link_domain` |
-| `photo_open` | Opening a gallery thumbnail in the lightbox | `gallery`, `photo_id` (Cloudinary image identifier) |
-
-All custom events include `page_path` without its query string or fragment. The custom payloads do not include email addresses, mail subjects, full destination URLs, or link text. GA4's own automatically collected fields are separate from these custom payloads.
-
-`link_location` comes from the nearest `data-analytics-location`, section ID, nav ID, or footer. Current placements include `home`, `about`, `work`, `work_index`, `contact`, `navbar`, `footer`, and `photo_contact`.
-
-Use GA4 Enhanced Measurement for generic outbound `click` and `file_download` events instead of also sending `outbound_click`. These can coexist with the intent-specific events above, but should not be summed as separate user actions. A resume click is not a confirmed download, an email click is not a sent inquiry, and a case-study click is not proof the destination loaded. `photo_open` counts only thumbnail opens, not next/previous/keyboard browsing. Page views remain owned by the GA4 configuration; custom tracking sends no extra page views.
-
-### GA4 property setup after deployment
-
-1. Check the web stream's Enhanced Measurement settings for outbound clicks and file downloads. The repository cannot confirm those settings.
-2. Create event-scoped custom dimensions for `link_location`, `contact_intent`, `project_slug`, `platform`, and `gallery` if those breakdowns are needed in reports. `photo_id` is optional for per-photo reporting.
-3. Consider `email_click` a key event for contact intent. Keep resume, social, project, and gallery events as engagement measures unless the reporting goal calls for otherwise.
-4. Use Tag Assistant / DebugView to verify the deployed site: one intended custom event per action, correct placement, and no extra page views. Debug mode is not enabled for ordinary visitors by this code.
-
-References: [Enhanced Measurement](https://support.google.com/analytics/answer/9216061) and [GA4 event parameters](https://developers.google.com/analytics/devguides/collection/ga4/event-parameters).
-
 ### Tests
 
 Unit tests use Node's built-in test runner with no added dependencies:
